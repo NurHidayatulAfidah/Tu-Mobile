@@ -616,6 +616,15 @@ padding: 20px;
     background-color: #9e9e9e;
     text-align: center;
 }
+
+body{
+	background-color:#00FFFF;
+	background: url('https://images4.alphacoders.com/307/thumb-1920-30716.jpg') ;
+	-webkit-background-size: cover;
+-moz-background-size: cover;
+
+	
+}
 </style>
   
 </head>
@@ -627,7 +636,7 @@ padding: 20px;
 	
 	<li> <a  href = "<?php echo base_url()?>tampiladminku/datapemesan"  rel='stylesheet' type='text/css'>DATA PEMESAN</a></li>
 		
-		<li><a  href = "<?php echo base_url()?>inputadmin/proses_input"  rel='stylesheet' type='text/css'>BARANG</a></li>
+		<li><a  href = "<?php echo base_url()?>inputadmin/index"  rel='stylesheet' type='text/css'>BARANG</a></li>
 		
 		<li><a  href = "<?php echo base_url()?>contactku/index"  rel='stylesheet' type='text/css'>HUBUNGI</a></li>
 		

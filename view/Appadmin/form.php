@@ -1,14 +1,7 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
-	<head>
-	<meta charset="utf-8">
-		<title>List Pemesan</title>
-		
-		<style type="text/css" >
-		
-		*, *:before, *:after {
+<html>
+
+  <style type="text/css">
+	  	*, *:before, *:after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -80,7 +73,55 @@ nav ul:after {
 	nav ul ul ul {
 		position: absolute; left: 100%;  top:0;
 	}
-		
+	.line:after, nav:after, .center:after, .box:after, .margin:after, .margin2x:after {
+  clear:both;
+  content:".";
+  display:block;
+  height:0;
+  line-height:0;
+  overflow: hidden;
+  visibility:hidden;
+}
+img {
+  border:0;
+  display:block;
+  height:auto;
+  max-width:100%;
+  width:auto;
+}
+.size-960 .line,.size-1140 .line,.size-1280 .line {
+  margin:0 auto;
+  padding:0 0.625rem;
+}
+.center {
+  float:none;
+  margin:0 auto;
+  display:block;
+}
+ .hide-l,.hide-m {
+	 display:block!important;
+	 }
+  .hide-s {
+	  display:none!important;
+	  }
+.size-960 .line {
+	max-width:60rem;
+	}
+.size-1140 .line {
+	max-width:71.25rem;
+	}
+.size-1280 .line {
+	max-width:80rem;
+	}
+.size-960.align-content-left .line,.size-1140.align-content-left .line,.size-1280.align-content-left .line {
+	margin-left:0;
+	}
+	.line {
+		clear:left;
+		}
+.line .line {
+	padding:0;
+	}
 #footer_bottom {
 background-color: #0e639d;
 padding-top: 13px;
@@ -121,12 +162,14 @@ padding: 20px;
     padding: 20px;
     background-color: #9e9e9e;
     text-align: center;
-}
-</style>
-	</head>
-	<body >
-	
-	<nav class="fixed-top nav navul nav ul:after nav ul li nav ul li:hover nav ul li:hover a nav ul li a nav ul ul nav ul ul li nav ul ul li a nav ul ul li a:hover nav ul ul ul">
+}	
+
+		
+	  </style>
+
+   <!-- TOP NAV WITH LOGO -->  
+      <header>
+        	<nav class="fixed-top nav navul nav ul:after nav ul li nav ul li:hover nav ul li:hover a nav ul li a nav ul ul nav ul ul li nav ul ul li a nav ul ul li a:hover nav ul ul ul">
 	
 <ul>
 <li><a  href = "<?php echo base_url()?>tampiladminku/home"  rel='stylesheet' type='text/css'>HOME</a></li>
@@ -144,19 +187,38 @@ padding: 20px;
 		
 		</ul>
  </nav>
- <div class="content">
-     
-	 
-	 </div>
-	 
-	 
-	 
-	 
-	 
-     
-	</body>
-	 <!-- FOOTER -->   
-      <footer>
+      </header>
+<br><br><br>	  
+	  <body>
+	  <h1>Tambah Stok Barang</h1>
+<!-- Menampilkan Error jika validasi tidak valid -->
+<div style="color: red;"><?php echo (isset($message))? $message : ""; ?></div>
+<?php echo form_open("inputadmin/tambah", array('enctype'=>'multipart/form-data')); ?>
+  <table cellpadding="8">
+    <tr>
+      <td>nama barang</td>
+      <td><input type="text" name="nama_barang" value="<?php echo set_value('nama_barang'); ?>"></td>
+    </tr>
+	<tr>
+      <td>harga satuan</td>
+      <td><input type="text" name="harga_satuan" value="<?php echo set_value('harga_satuan'); ?>"></td>
+    </tr>
+	<tr>
+      <td>stok barang</td>
+      <td><input type="text" name="stok_barang" value="<?php echo set_value('stok_barang'); ?>"></td>
+    </tr>
+    <tr>
+      <td>Gambar</td>
+      <td><input type="file" name="input_gambar"></td>
+    </tr>
+  </table>
+    
+<br><br>
+  <input type="submit" name="submit" value="Simpan">
+  <a href="<?php echo base_url(); ?>"><input type="button" value="Batal"></a>
+<?php echo form_close(); ?>
+</body>
+  <footer>
          <div id="footer_bottom" class="footer-bottom footer">
 <div class="container">
 <div class="row">
