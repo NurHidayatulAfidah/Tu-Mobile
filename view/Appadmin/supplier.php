@@ -1,5 +1,16 @@
-<html>
-   <link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/icon/apple-touch-icon-57.png" />
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?>
+<!DOCTYPE html>
+<html lang="en-US">
+   
+<!-- Mirrored from www.evitamineralwater.com/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 01 May 2018 00:00:43 GMT -->
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Kontak Kami | evitamineralwater.com</title>
+       
+       <link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/icon/apple-touch-icon-57.png" />
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/icon/apple-touch-icon-72.png" />
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/icon/apple-touch-icon-144.png" />
     <link rel="apple-touch-icon-precomposed" sizes="60x60" href="img/icon/apple-touch-icon-60.png" />
@@ -22,12 +33,8 @@
       <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
       <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
       <script type="text/javascript" src="js/jquery-ui.min.js"></script>    
- <style type="text/css">
-  .file {
-    visibility: hidden;
-    position: absolute;
-  }
-  	*, *:before, *:after {
+	  <style type="text/css">
+	  	*, *:before, *:after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -99,7 +106,56 @@ nav ul:after {
 	nav ul ul ul {
 		position: absolute; left: 100%;  top:0;
 	}
-		#footer_bottom {
+	.line:after, nav:after, .center:after, .box:after, .margin:after, .margin2x:after {
+  clear:both;
+  content:".";
+  display:block;
+  height:0;
+  line-height:0;
+  overflow: hidden;
+  visibility:hidden;
+}
+img {
+  border:0;
+  display:block;
+  height:auto;
+  max-width:100%;
+  width:auto;
+}
+.size-960 .line,.size-1140 .line,.size-1280 .line {
+  margin:0 auto;
+  padding:0 0.625rem;
+}
+.center {
+  float:none;
+  margin:0 auto;
+  display:block;
+}
+ .hide-l,.hide-m {
+	 display:block!important;
+	 }
+  .hide-s {
+	  display:none!important;
+	  }
+.size-960 .line {
+	max-width:60rem;
+	}
+.size-1140 .line {
+	max-width:71.25rem;
+	}
+.size-1280 .line {
+	max-width:80rem;
+	}
+.size-960.align-content-left .line,.size-1140.align-content-left .line,.size-1280.align-content-left .line {
+	margin-left:0;
+	}
+	.line {
+		clear:left;
+		}
+.line .line {
+	padding:0;
+	}
+#footer_bottom {
 background-color: #0e639d;
 padding-top: 13px;
 padding-bottom: 17px;
@@ -139,43 +195,26 @@ padding: 20px;
     padding: 20px;
     background-color: #9e9e9e;
     text-align: center;
+}	
+body{
+	background-color:#00FFFF;
+	background: url('https://previews.123rf.com/images/dariusl/dariusl1204/dariusl120400081/13186514-courier-figure-bring-package-businessman-make-sign.jpg') ;
+	-webkit-background-size: cover;
+-moz-background-size: cover;
+background-size: 70%;
+	
 }
-.cards {
-	width: 1000px;
-	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-  	border-radius: 2px;
-  	overflow: hidden;
-  	margin: 0 auto;
-}
-.cards-image {
-	width: 100%;
-}
-.cards-image img {
-	width: 100%
-}
-.cards-box {
-	padding: 15px;
-}
-
 .button{
     width: 100%;
     height: 50px;
   }
-  .left{
-    float: left;
-    display: block;
-  }
-  .right{
-    float: right;
-    display: block;
-  }
+  
 .button ul a{
-  padding: 10px;
+  padding: 5px;
   background: rgb(116, 181, 12);
   color: white;
 }
-#page-wrap{
+	#page-wrap{
 width: 590px;
 margin: 50px auto;
 padding: 20px;
@@ -184,9 +223,13 @@ background: whitesmoke;
 -webkit-box-shadow: 0 0 20px blue;
 box-shadow: 0 0 20px blue;
 }
-
-  </style>
-<nav class="fixed-top nav navul nav ul:after nav ul li nav ul li:hover nav ul li:hover a nav ul li a nav ul ul nav ul ul li nav ul ul li a nav ul ul li a:hover nav ul ul ul">
+		
+	  </style>
+   </head>
+   <body class="size-1140">
+      <!-- TOP NAV WITH LOGO -->  
+      <header>
+        	<nav class="fixed-top nav navul nav ul:after nav ul li nav ul li:hover nav ul li:hover a nav ul li a nav ul ul nav ul ul li nav ul ul li a nav ul ul li a:hover nav ul ul ul">
 	
 <ul>
 <li><a  href = "<?php echo base_url()?>tampiladminku/home"  rel='stylesheet' type='text/css'>HOME</a></li>
@@ -194,8 +237,8 @@ box-shadow: 0 0 20px blue;
 	<li> <a  href = "<?php echo base_url()?>tampiladminku/datapemesan"  rel='stylesheet' type='text/css'>PEMESANAN</a></li>
 		
 		<li><a  href = "<?php echo base_url()?>inputadmin/index"  rel='stylesheet' type='text/css'>BARANG</a></li>
-
-		<li><a  href = "<?php echo base_url()?>supplierku/index"  rel='stylesheet' type='text/css'>SUPPLIER</a></li>
+			<li><a  href = "<?php echo base_url()?>supplierku/index"  rel='stylesheet' type='text/css'>SUPPLIER</a></li>
+		
 		
 		
 		<li><a  href = "<?php echo base_url()?>kurirku/index"  rel='stylesheet' type='text/css'>KURIR</a></li>		
@@ -204,66 +247,47 @@ box-shadow: 0 0 20px blue;
 		
 		</ul>
  </nav>
- <br>
- <body>
-        <div class="container">
-          <div class="navbar-header">
- <h1><center>Data Stok Barang</center></h1>
+      </header>
+	  <div id="page-wrap" align ="center">
+	<div class="content"> 
+	
+	<h2><center>DATA SUPPLIER</center></h2>
+	<br><br>
+	<center><div class="button">
+  <ul><?php echo anchor('supplierku/tambah','Tambah Data'); ?></a></ul></div></center>
+	<table style="margin:20px auto;" border="1" >
+		<tr>
+			<th>No</th>
+			<th>Id Supplier</th> 
+			<th>Nama Supplier</th>
+			<th>Alamat Supplier</th>
+			<th>No Hp Supplier</th>
+			
+		</tr>
+		<?php 
+		$no = 1;
+		foreach($data_pemasok as $u){ 
+		?>
+		<tr>
+			<td><?php echo $no++ ?></td>
+			<td><?php echo $u->ID_PEMASOK ?></td>
+			<td><?php echo $u->NAMA_PEMASOK ?></td>
+			<td><?php echo $u->ALAMAT ?></td>
+			<td><?php echo $u->NO_HP_PEMASOK ?></td>
+			<td>
+			      <?php echo anchor('supplierku/edit/'.$u->ID_PEMASOK,'Edit'); ?>
+                              <?php echo anchor('supplierku/hapus/'.$u->ID_PEMASOK,'Hapus'); ?>
+			</td>
+		</tr>
+		<?php } ?>
+	</table>
  
- <div class="button">
-  <ul class="left">
-<a href="<?php echo base_url("index.php/inputadmin/tambah"); ?>" >Tambah Produk / Barang</a></ul></div><br><br>
-<div id="navbar" class="navbar-collapse collapse">
-<div class="container">
-     <div class="row">
-	 <div class="col-lg-4 col-md-6 mb-4">
-            <div class="kotak">
-
-<tr>
-</tr>
-<div class="cards">
-	<form action="<?php echo base_url(). 'inputadmin/tambahStok'; ?>" method="post">
-	<table id="tt" style="width:700px;height:350px"
- title="DataGrid - CardView" singleSelect="true" fitColumns="true" remoteSort="false"
- url="data.php" pagination="true" sortOrder="desc" sortName="id">
- <thead>
  
- <tr>
-<th width="120" >Barang</th>
-<th width="120" >id Pemasok</th>
- <th  width="120" >Nama Barang</th>
-  <th  width="120" >Jenis Barang</th>
- <th  width="120" >Harga Satuan</th>
- <th  width="120" >Stock Barang</th>
  
- </tr>
-<?php
-if( ! empty($gambar)){ // Jika data pada database tidak sama dengan empty (alias ada datanya)
-  foreach($gambar as $data){ // Lakukan looping pada variabel gambar dari controller
-    echo "<tr>";
-    echo "<td><center><img src='".base_url("images/".$data->nama_file)."' width='120' height='100'></center></td>";
-    //echo "<td>".$data->nama_file."</td>";
-	echo "<td> <center>".$data->ID_PEMASOK."</center></td>";
-	echo "<td> <center>".$data->NAMA_BARANG."</center></td>";
-	echo "<td> <center>".$data->JENIS_BARANG."</center></td>";
-    echo "<td> <center>".$data->HARGA_SATUAN."</center> </td>";
-    echo "<td> <center>".$data->STOCK_BARANG."</center></td>";
-	echo "<td><input type='image' src='".base_url("tambah.png")."' value='Tambah_Stok'></td>";
-    echo "</tr>";
-  }
-}else{ // Jika data tidak ada
-  echo "<tr><td colspan='5'>Data tidak ada</td></tr>";
-}
-?> 
-
- </thead>
- </table>
- </form>
  </div>
-</div>
-</div></div></div>
-<footer>
-    <div id="footer_bottom" class="footer-bottom footer">
+ </div>
+     <footer>
+         <div id="footer_bottom" class="footer-bottom footer">
 <div class="container">
 <div class="row">
 <div class="col-md-12">
@@ -271,7 +295,6 @@ if( ! empty($gambar)){ // Jika data pada database tidak sama dengan empty (alias
 </div>
 </div>
 </div>
-</body>
       </footer>
       <script type="text/javascript" src="js/responsee.js"></script> 
       <script type="text/javascript" src="owl-carousel/owl.carousel.js"></script>   
@@ -287,4 +310,7 @@ if( ! empty($gambar)){ // Jika data pada database tidak sama dengan empty (alias
          });	
           
       </script>  
+   </body>
+
+<!-- Mirrored from www.evitamineralwater.com/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 01 May 2018 00:00:56 GMT -->
 </html>

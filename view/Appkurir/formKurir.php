@@ -27,7 +27,7 @@ body{
 }
 nav ul {
 	background: #0099ff; 
-	padding:0px 179px;
+	padding:0px 178px;
 	border-radius: 0px;  
 	list-style: none;
 	position: relative;
@@ -178,49 +178,39 @@ padding: 20px;
 		
 		<li><a  href = "<?php echo base_url()?>inputadmin/index"  rel='stylesheet' type='text/css'>BARANG</a></li>
 		
-			<li><a  href = "<?php echo base_url()?>supplierku/index"  rel='stylesheet' type='text/css'>SUPPLIER</a></li>
+			<li><a  href = "<?php echo base_url()?>supplierku/index"  rel='stylesheet' type='text/css'>SUPLLIER</a></li>
 		
 		
 		
-		<li><a  href = "<?php echo base_url()?>kurirku/index"  rel='stylesheet' type='text/css'>KURIR</a></li>	
-<li><a href="<?php echo base_url('loginku/logout'); ?>">LOG OUT</a><li>
-		<li><a href="#" onclick='myFunction()'rel='stylesheet' type='text/css'><p> <?php echo $this->session->userdata("nama"); ?> </p><a></li>		
-		
+		<li><a  href = "<?php echo base_url()?>kurirku/index"  rel='stylesheet' type='text/css'>KURIR</a></li>		
+		<li><a href="<?php echo base_url('loginku/logout'); ?>">LOG OUT</a><li>
+		<li><a href="#" onclick='myFunction()'rel='stylesheet' type='text/css'><p> <?php echo $this->session->userdata("nama"); ?> </p><a></li>
 		
 		</ul>
  </nav>
       </header>
 <br><br><br>	  
 	  <body>
-	  
-	  <h1>Tambah Stok Barang</h1>
+	  <h1>Tambah Kurir</h1>
 <!-- Menampilkan Error jika validasi tidak valid -->
 <div style="color: red;"><?php echo (isset($message))? $message : ""; ?></div>
-<?php echo form_open("inputadmin/tambah", array('enctype'=>'multipart/form-data')); ?>
+<?php echo form_open("kurirku/tambah", array('enctype'=>'multipart/form-data')); ?>
   <table cellpadding="8">
-      <tr>
-      <td>id barang</td>
-      <td><input type="varchar" name="ID_BARANG" value="<?php echo set_value('ID_BARANG'); ?>"></td>
+  <tr>
+      <td>Id Kurir</td>
+      <td><input type="varchar" name="ID_KURIR" value="<?php echo set_value('ID_KURIR'); ?>"></td>
     </tr>
-	 <tr>
-      <td>id supplier</td>
-      <td><input type="varchar" name="ID_PEMASOK" value="<?php echo set_value('ID_PEMASOK'); ?>"></td>
-    </tr>
-	<tr>
-      <td>nama barang</td>
-      <td><input type="char" name="NAMA_BARANG" value="<?php echo set_value('NAMA_BARANG'); ?>"></td>
+    <tr>
+      <td>Nama Kurir</td>
+      <td><input type="char" name="NAMA_KURIR" value="<?php echo set_value('NAMA_KURIR'); ?>"></td>
     </tr>
 	<tr>
-      <td>jenis barang</td>
-      <td><input type="char" name="JENIS_BARANG" value="<?php echo set_value('JENIS_BARANG'); ?>"></td>
+      <td>Alamat Kurir</td>
+      <td><input type="char" name="ALAMAT_KURIR" value="<?php echo set_value('ALAMAT_KURIR'); ?>"></td>
     </tr>
 	<tr>
-      <td>harga satuan</td>
-      <td><input type="text" name="HARGA_SATUAN" value="<?php echo set_value('HARGA_SATUAN'); ?>"></td>
-    </tr>
-	<tr>
-      <td>stock barang</td>
-      <td><input type="text" name="STOCK_BARANG" value="<?php echo set_value('STOCK_BARANG'); ?>"></td>
+      <td>No HP Kurir</td>
+      <td><input type="varchar" name="NO_HP_KURIR" value="<?php echo set_value('NO_HP_KURIR'); ?>"></td>
     </tr>
     <tr>
       <td>Gambar</td>

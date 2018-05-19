@@ -33,7 +33,7 @@ body{
 }
 nav ul {
 	background: #0099ff; 
-	padding: 0px 183px;
+	padding: 0px 179px;
 	border-radius: 0px;  
 	list-style: none;
 	position: relative;
@@ -54,7 +54,7 @@ nav ul:after {
 			}
 		
 		nav ul li a {
-			display: block; padding: 15px 40px;
+			display: block; padding: 9px 40px;
 			color: #fff; text-decoration: none;
 		}
 			
@@ -94,6 +94,14 @@ nav ul:after {
     background-color: #0e639d;
     text-align: center;
 }
+body{
+	background-color:#00FFFF;
+	background: url('https://1.bp.blogspot.com/-WAFLgYYVuzs/V-r5W-CgF6I/AAAAAAAAAyg/AvPNQgkHlYk0itTZh-quKb9cw_yB7w2-QCLcB/s1600/Subhanallah%2521%2521%2521%2BTernyata%2BAir%2BMemiliki%2BKeajaiban.jpg') ;
+	-webkit-background-size: cover;
+-moz-background-size: cover;
+
+	
+}
 
 </style>
 	</head>
@@ -104,17 +112,18 @@ nav ul:after {
 <ul>
 <li><a  href = "<?php echo base_url()?>tampiladminku/home"  rel='stylesheet' type='text/css'>HOME</a></li>
 	
-	<li> <a  href = "<?php echo base_url()?>tampiladminku/datapemesan"  rel='stylesheet' type='text/css'>DATA PEMESAN</a></li>
+	<li> <a  href = "<?php echo base_url()?>tampiladminku/datapemesan"  rel='stylesheet' type='text/css'>PEMESANAN</a></li>
 		
-		<li><a  href = "<?php echo base_url()?>inputadmin/proses_input"  rel='stylesheet' type='text/css'>BARANG</a></li>
+		<li><a  href = "<?php echo base_url()?>inputadmin/index"  rel='stylesheet' type='text/css'>BARANG</a></li>
 		
-		<li><a  href = "<?php echo base_url()?>contactku/index"  rel='stylesheet' type='text/css'>HUBUNGI</a></li>
+		<li><a  href = "<?php echo base_url()?>supplierku/index"  rel='stylesheet' type='text/css'>SUPPLIER</a></li>
 		
-		<li><a  href = "<?php echo base_url()?>loginku/index"  rel='stylesheet' type='text/css'>LOGIN</a></li>
+		
 		
 		<li><a  href = "<?php echo base_url()?>kurirku/index"  rel='stylesheet' type='text/css'>KURIR</a></li>		
-		
+		<li><a href="<?php echo base_url('loginku/logout'); ?>">LOG OUT</a><li>
 		<li><a href="#" onclick='myFunction()'rel='stylesheet' type='text/css'><p> <?php echo $this->session->userdata("nama"); ?> </p><a></li>
+		
 		</ul>
  </nav>
  <div class="content">
@@ -137,23 +146,42 @@ function myFunction() {
                     
 					<ol>
 					<br>
-                        <li> Kualitas air mineral di Depo SCR baik itu isi ulang maupun air mineral kemasan kualitasnya terjamin dan air mineralnya berasal dari supplier yang terpercaya.</li> 
+                        <li><b> Kualitas air mineral di Depo SCR baik itu isi ulang maupun air mineral kemasan kualitasnya terjamin dan air mineralnya berasal dari supplier yang terpercaya.</b></li> 
                         <br>
-						<li> Harga air mineral dan LPG di Depo SCR terjangkau cocok untuk semua kalangan, baik keluarga maupun mahasiswa</li> 
+						<li><b> Harga air mineral dan LPG di Depo SCR terjangkau cocok untuk semua kalangan, baik keluarga maupun mahasiswa</b></li> 
                         <br>
-						<li> Pemesanan air mineral dan LPG di Depo SCR sangat mudah, dengan pelayanan yang mudah yaitu pesan antar dengan estimasi waktu antar barang</li> 
+						<li> <b>Pemesanan air mineral dan LPG di Depo SCR sangat mudah, dengan pelayanan yang mudah yaitu pesan antar dengan estimasi waktu antar barang</b></li> 
                         <br>
 					 </ol>
                      <br />
                      
                   </div>
-                  
+				
                </div>
             </div>
-			 <a href="<?php echo base_url('loginku/logout'); ?>">Logout</a>
+			   <div class="line">
+               <div class="margin">
+                  <div class="s-12 l-6">
+       
+					 <h3> HUBUNGI DEPO AIR MINERAL DAN LPG SCR :</h3>
+			<hr></hr>
+                     <address>
+                        <p><i class="icon-home icon"></i> jln.Sumatra 111 ,Jember</p>
+                        <p><i class="icon-globe_black icon"></i> 085648156995 </p>
+                        <p><i class="icon-mail icon"></i> contact_name@sample.com</p>
+                     </address>
+                     <br />
+                     
+                  </div>
+                  
+               </div>
+			
+			
+			 
          </div>
          
       </section>
+	  
 	  </div>
       <!-- FOOTER -->   
     

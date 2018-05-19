@@ -14,21 +14,21 @@ class loginku extends CI_Controller{
 		$this->load->view('Appadmin/v_login');
 	}
 	function cek_login(){
-  $username = $this->input->post('username');
-  $password = $this->input->post('password');
+  $USERNAME = $this->input->post('USERNAME');
+  $PASSWORD = $this->input->post('PASSWORD');
   $where = array(
-   'username' => $username,
-   'password' => $password);
+   'USERNAME' => $USERNAME,
+   'PASSWORD' => $PASSWORD);
    
-  $cek = $this->data_login->cek_login("pengguna",$where)->num_rows();
+  $cek = $this->data_login->cek_login("data_pengguna",$where)->num_rows();
   if($cek > 0){
 
    $data_session = array(
-    'nama' => $username,
+    'nama' => $USERNAME,
     'status' => "login");
 
    $this->session->set_userdata($data_session);
-   redirect(base_url("tampiladminku"));
+   redirect(base_url("tampiladminku/home"));
 
   }else{
    echo "<script type='text/javascript'>

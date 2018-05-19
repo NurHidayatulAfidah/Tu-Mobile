@@ -15,7 +15,7 @@ class tampiladminku extends CI_Controller{
 	}
 	
 	function index(){
-		$this->load->view('Appadmin/home','Appadmin/datapemesan','Appadmin/input_delivery','Appadmin/v_admin');
+		$this->load->view('Appadmin/list_delivery','Appadmin/datapemesan','Appadmin/input_delivery','Appadmin/v_admin');
 	}
 	function home(){
 		//$data = $this->Model_Mahasiswa->get_data();
@@ -47,18 +47,20 @@ function pemesan(){
 	function input(){
 		if (isset($_POST['btnTambah'])){
 			$data = $this->Model_delivery->input(array (
-			'Id_Pemesanan' => $this->input->post('Id_Pemesanan'),
-			'Nama_Pemesan' => $this->input->post('Nama_Pemesan'),
-			'Alamat' => $this->input->post('Alamat'),
-			'Waktu_Pemesanan' => $this->input->post('Waktu_Pemesanan'),
-			'Waktu_Tiba' => $this->input->post('Waktu_Tiba'),
-			'Pengirim' => $this->input->post('Pengirim'),
-			'id_status' => $this->input->post('status')));
+			'ID_PEMESANAN' => $this->input->post('ID_PEMESANAN'),
+			'ID_PEMESANAN' => $this->input->post('STATUS'),
+			'ID_PENGGUNA' => $this->input->post('ID_PENGGUNA'),
+			'ID_PENGGUNA' => $this->input->post('NAMA_PENGGUNA'),
+			'ID_BARANG' => $this->input->post('ID_BARANG'),
+			'ID_BARANG' =>$this->input->post('NAMA_BARANG'),
+			'JUMLAH'=>$this->input->post('JUMLAH')));
 			redirect('tampiladminku/datapemesan');
 		}else{
 			$x =$this->Model_delivery->get_status();
 			$data = array(
-				'nama_status'=>$this->Model_delivery->get_status()
+			'namapengguna'=>$this->Model_delivery->get_pengguna(),
+			 'nama_status'=>$this->Model_delivery->get_status(),
+				'namabarang'=>$this->Model_delivery->get_barang()
 				);
 			//var_dump($x);
 			$this->load->view('Appadmin/input_delivery',$data);
@@ -66,12 +68,13 @@ function pemesan(){
 	}
 	
 	function update(){
-		$id = $this->input->post('No_Pemesan');
-		$insert = $this->Model_Mahasiswa->update(array(
+		$id = $this->input->post('ID_PEMESANAN');
+		$insert = $this->Model_delivery->update(array(
                 
-				'No_Pemesan' => $this->input->post('No_Pemesan'),
-				'Alamat' => $this->input->post('Alamat'),
-				'Waktu_Pemesanan' => $this->input->post('Waktu_Pemesanan')
+				'ID_PEMESANAN' => $this->input->post('ID_PEMESANAN'),
+				'ID_PENGGUNA' => $this->input->post('ID_PENGGUNA'),
+				'ID_BARANG' => $this->input->post('ID_BARANG'),
+				'JUMLAH'=>$this->input->post('JUMLAH')
             ), $id);
         redirect('Mahasiswa/home');
         }

@@ -1,12 +1,8 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
-	<head>
-	<meta charset="utf-8">
-		<title>List Pemesan</title>
-		
-		<style type="text/css" >
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Membuat CRUD dengan CodeIgniter | MalasNgoding.com</title>
+<style type="text/css" >
 		*, *:before, *:after {
   box-sizing: border-box;
   margin: 0;
@@ -26,14 +22,7 @@ nav {
 	text-align: left;
 	
 }
-body{
-	background-color:#00FFFF;
-	background: url('https://img.clipart.guru/unloading-3d-working-people-workers-unloading-boxes-from-a-truck-isolated-white-backgrounddelivery-truck-unloading-clipart-1300_1191.jpg') ;
-	-webkit-background-size: cover;
--moz-background-size: cover;
-background-size: 70%;
-	
-}
+
 nav ul {
 	background: #0099ff; 
 	padding:0px 179px;
@@ -83,7 +72,7 @@ nav ul:after {
 		position: absolute; left: 100%;  top:0;
 	}
 		#page-wrap{
-width: 900px;
+width: 590px;
 margin: 50px auto;
 padding: 20px;
 background: whitesmoke;
@@ -144,10 +133,10 @@ padding: 20px;
 }
 
 
+
 </style>
 	</head>
-	<body >
-	
+<body>
 	<nav class="fixed-top nav navul nav ul:after nav ul li nav ul li:hover nav ul li:hover a nav ul li a nav ul ul nav ul ul li nav ul ul li a nav ul ul li a:hover nav ul ul ul">
 	
 <ul>
@@ -165,52 +154,47 @@ padding: 20px;
 		<li><a href="#" onclick='myFunction()'rel='stylesheet' type='text/css'><p> <?php echo $this->session->userdata("nama"); ?> </p><a></li>
 		</ul>
  </nav>
-
- <div class="content"> 
- <div id="page-wrap" align ="center">
-		<p><h3 align="center">Daftar Pemesan Barang</h3></p>
-		<br>
-		<p align="center"><div class="button">
-  <ul><a href="<?php echo base_url()?>tampiladminku/input">Tambah</a></ul></div></p>
-		<p align="center">
-		<form method="get" action="datapemesan">
-		<p align="center"><input type="text" name="data">
-		<input type="submit" name="send" value="Cari">
-		</form>
-		<br><br>
-		
-			<table border="1" align="center">
-				<tr>
-				 <th>No</th>
-					<th>Id Pemesanan</th>
-					<th>Nama Pengguna</th>
-					<th>Nama Barang</th>
-					<th>Jumlah Pesan Barang</th>
-					
-					
-				</tr>
-				
-				<?php
-				
-                $no = 1;
-                foreach ($data as $row): ?>
-				<tr align="center">
-				    <td><?php echo $no;?></td>
-					<td><?php echo $row->ID_PEMESANAN;?></td>
-					<td><?php echo $row->NAMA_PENGGUNA;?></td>
-					<td><?php echo $row->NAMA_BARANG;?></td>
-					<td><?php echo $row->JUMLAH;?></td>
-					
-				</tr>
-				<?php $no++;
-                endforeach;?>
-				
-			</table>
-			
-		</p>
-			</div></div>
-	</body>
-	 <footer>
+ <br><br>
+	<center>
+		<h1>Menambahkan Stok Barang </h1>
+		<h3>TAMBAH STOK</h3>
+	</center>
+	<?php foreach($data_barang as $u){ ?>
+	<form action="<?php echo base_url(). 'inputadmin/update'; ?>" method="post">
+		<table style="margin:20px auto;">
+		<tr>
+				<td>Id Barang</td>
+				<td>
+					<input type="varchar" name="ID_BARANG" value="<?php echo $u->ID_BARANG ?>">
+				</td>
+			</tr>
+			<tr>
+				<td>Nama Barang</td>
+				<td>
+					<input type="varchar" name="NAMA_BARANG" value="<?php echo $u->NAMA_BARANG ?>">
+				</td>
+			</tr>
+			<tr>
+				<td>Jenis Barang</td>
+				<td><input type="varchar" name="JENIS_BARANG" value="<?php echo $u->JENIS_BARANG ?>"></td>
+			</tr>
+			<tr>
+				<td>Harga Satuan</td>
+				<td><input type="varchar" name="HARGA_SATUAN" value="<?php echo $u->HARGA_SATUAN ?>"></td>
+			</tr>
+			<tr>
+				<td>Stok Barang</td>
+				<td><input type="varchar" name="STOCK_BARANG" value="<?php echo $u->STOCK_BARANG ?>"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Tambah_Stok"></td>
+			</tr>
+		</table>
+	</form>	
+	<?php } ?>
+</body>
+ <footer>
          <div id="footer_bottom" class="footer-bottom footer" >
 <div class="container">
 <div class="row">
@@ -221,3 +205,5 @@ padding: 20px;
 </div>
       </footer>
 </html>
+
+

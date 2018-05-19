@@ -490,7 +490,7 @@ nav {
 
 nav ul {
 	background: #0099ff; 
-	padding:0px 230px;
+	padding:0px 179px;
 	border-radius: 0px;  
 	list-style: none;
 	position: relative;
@@ -629,21 +629,7 @@ body{
   
 </head>
 <header>
-	<nav class="fixed-top nav navul nav ul:after nav ul li nav ul li:hover nav ul li:hover a nav ul li a nav ul ul nav ul ul li nav ul ul li a nav ul ul li a:hover nav ul ul ul">
 	
-<ul>
-<li><a  href = "<?php echo base_url()?>tampiladminku/home"  rel='stylesheet' type='text/css'>HOME</a></li>
-	
-	<li> <a  href = "<?php echo base_url()?>tampiladminku/datapemesan"  rel='stylesheet' type='text/css'>DATA PEMESAN</a></li>
-		
-		<li><a  href = "<?php echo base_url()?>inputadmin/index"  rel='stylesheet' type='text/css'>BARANG</a></li>
-		
-		<li><a  href = "<?php echo base_url()?>contactku/index"  rel='stylesheet' type='text/css'>HUBUNGI</a></li>
-		
-		<li><a  href = "<?php echo base_url()?>loginku/index"  rel='stylesheet' type='text/css'>LOGIN</a></li>
-		<li><a  href = "<?php echo base_url()?>kurirku/index"  rel='stylesheet' type='text/css'>KURIR</a></li>		
-		</ul>
- </nav>
 </header>
 <body>
 <div class="content">
@@ -658,14 +644,14 @@ body{
             <path d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8" />
           </svg>
 		  <tr><td>
-          <input type="text" class="login__input name" name="username" maxlength="15" placeholder="Username"/></td></tr>
+          <input type="text" class="login__input name" name="USERNAME" maxlength="15" placeholder="Username"/></td></tr>
         </div>
         <div class="login__row">
           <svg class="login__icon pass svg-icon" viewBox="0 0 20 20">
             <path d="M0,20 20,20 20,8 0,8z M10,13 10,16z M4,8 a6,8 0 0,1 12,0" />
           </svg>
 		  <tr><td>
-          <input type="password" class="login__input pass" name="password" maxlength="20" placeholder="Password"/></td></tr>
+          <input type="password" class="login__input pass" name="PASSWORD" maxlength="20" placeholder="Password"/></td></tr>
         </div>
 		<tr><td>
         <button type="submit" class="login__submit">Sign in</button></td></tr>
@@ -753,15 +739,6 @@ body{
 
 </div>
 </body>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<footer>
-         <div id="footer_bottom" class="footer-bottom footer">
-<div class="container">
-<div class="row">
-<div class="col-md-12">
-<div class="copyright">2014 © <a href="#">FormGet.com</a> All rights reserved.</div>
-</div>
-</div>
-</div>
-      </footer>
+
+
 </html>
