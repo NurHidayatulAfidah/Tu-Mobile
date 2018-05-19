@@ -2,40 +2,58 @@
 class Model_delivery extends CI_Model {
 	
 	function get_table(){
-        return $this->db->get("data_pengiriman");
+        return $this->db->get("data_pemesanan");
     }
      function get_data_cari($data){
-		$data = $this->db->query("SELECT * FROM ( SELECT data_pengiriman.Id_Pemesanan,data_pengiriman.Nama_Pemesan,data_pengiriman.Alamat,data_pengiriman.Waktu_Pemesanan,data_pengiriman.Waktu_Tiba,data_pengiriman.Pengirim,status.status FROM data_pengiriman,status WHERE data_pengiriman.id_status=status.id_status) AS tabel WHERE tabel.Nama_Pemesan='$data'");
+		$data = $this->db->query("SELECT * FROM ( SELECT data_pemesanan.ID_PEMESANAN,data_pemesanan.ID_PENGGUNA,data_pemesanan.ID_BARANG,data_pemesanan.JUMLAH FROM data_pemesanan,data_pengguna,data_barang WHERE data_pemesanan.ID_PENGGUNA=data_pengguna.ID_PENGGUNA ) AS tabel WHERE tabel.ID_PENGGUNA='$data'");
 		return $data->result();
 	}
 	function get_data(){
-		$query = $this->db->query("SELECT *FROM  data_pengiriman,status WHERE data_pengiriman.id_status=status.id_status");
+		$query = $this->db->query("SELECT *FROM  data_pemesanan,data_pengguna,data_barang  ");
 		return $query->result();
 	}
-	
+	function get_pembayaran(){
+		$query = $this->db->query("SELECT * FROM data_pembayaran ");
+		return $query->result();
+	}
+	function get_pengguna(){
+		$query = $this->db->query("SELECT * FROM data_pengguna ");
+		return $query->result();
+	}
 	function get_status(){
-		$query = $this->db->query("SELECT * FROM status ");
+		$query = $this->db->query("SELECT * FROM data_pengiriman ");
+		return $query->result();
+	}
+	function get_pengirim(){
+		$query = $this->db->query("SELECT * FROM data_kurir ");
+		return $query->result();
+	}
+	function get_barang(){
+		$query = $this->db->query("SELECT * FROM data_barang ");
+		return $query->result();
+	}
+		function get_pemesan(){
+		$query = $this->db->query("SELECT * FROM data_pemesanan ");
 		return $query->result();
 	}
 	
 	function get_data_edit(){
-		$query = $this->db->query("SELECT * FROM tm_mahasiswa WHERE nim = '$id'");
 		return $query->result_array();
 	}
 	
 	function input($data = array()){
-		return $this->db->insert('data_pengiriman',$data);
+		return $this->db->insert('data_pemesanan',$data);
 		//return $this->db->update('tm_mahasiswa',$data);
 	}
 	
 	function delete($id){
-		$this->db->where('No_Pemesan', $id);
-        return $this->db->delete('tampilpesan');
+		$this->db->where('ID_PEMESANAN', $id);
+        return $this->db->delete('data_pemesanan');
 	}
 	
 	function update($data = array(),$id){
-		$this->db->where('No_Pemesan',$id);
-		return $this->db->update('tampilpesan',$data);
+		$this->db->where('ID_Pemesan',$id);
+		return $this->db->update('data_pemesanan',$data);
 	}
 	
  

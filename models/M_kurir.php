@@ -1,8 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class M_produk extends CI_Model {
+class M_kurir extends CI_Model {
   // Fungsi untuk menampilkan semua data gambar
   public function view(){
-    return $this->db->get('data_barang')->result();
+    return $this->db->get('data_kurir')->result();
   }
   
   // Fungsi untuk melakukan proses upload file
@@ -27,16 +27,14 @@ class M_produk extends CI_Model {
   // Fungsi untuk menyimpan data ke database
   public function save($upload){
     $data = array(
-	  'ID_BARANG'=>$this->input->post('ID_BARANG'),
-	   'ID_PEMASOK'=>$this->input->post('ID_PEMASOK'),
-      'NAMA_BARANG'=>$this->input->post('NAMA_BARANG'),
-	  'JENIS_BARANG'=>$this->input->post('JENIS_BARANG'),
-      'HARGA_SATUAN' => $this->input->post('HARGA_SATUAN'),
-      'STOCK_BARANG' => $this->input->post('STOCK_BARANG'),
+	   'ID_KURIR'=>$this->input->post('ID_KURIR'),
+      'NAMA_KURIR'=>$this->input->post('NAMA_KURIR'),
+      'ALAMAT_KURIR' => $this->input->post('ALAMAT_KURIR'),
+	  'NO_HP_KURIR' => $this->input->post('NO_HP_KURIR'),
 	  'nama_file' => $upload['file']['file_name']
     );
     
-    $this->db->insert('data_barang', $data);
+    $this->db->insert('data_kurir', $data);
 }
 function edit_data($where,$table){
 	return $this->db->get_where($table,$where);
@@ -45,6 +43,8 @@ function update_data($where,$data,$table){
 		$this->db->where($where);
 		$this->db->update($table,$data);
 	}	
-	
-	
+	function delete($id){
+		$this->db->where($id);
+        return $this->db->delete('data_kurir');
+	}
 }
