@@ -4,35 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!DOCTYPE html>
 <html lang="en-US">
    
-<!-- Mirrored from www.evitamineralwater.com/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 01 May 2018 00:00:43 GMT -->
 <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Kontak Kami | evitamineralwater.com</title>
-       
-       <link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/icon/apple-touch-icon-57.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/icon/apple-touch-icon-72.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/icon/apple-touch-icon-144.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="img/icon/apple-touch-icon-60.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="img/icon/apple-touch-icon-120.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="img/icon/apple-touch-icon-76.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="img/icon/apple-touch-icon-152.png" />
-    <link rel="icon" type="image/png" href="img/icon/favicon-196x196.png" sizes="196x196" />
-    <link rel="icon" type="image/png" href="img/icon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/png" href="img/icon/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="img/icon/favicon-16x16.png" sizes="16x16" />
-    <link rel="icon" type="image/png" href="img/icon/favicon-128x128.png" sizes="128x128" />
-       
-      <link rel="stylesheet" href="css/components.css">
-      <link rel="stylesheet" href="css/icons.css">
-      <link rel="stylesheet" href="css/responsee.css">
-      <link rel="stylesheet" href="owl-carousel/owl.carousel.css">
-      <link rel="stylesheet" href="owl-carousel/owl.theme.css"> 
-      <!-- CUSTOM STYLE -->
-      <link rel="stylesheet" href="css/template-style.css"> 
-      <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-      <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
-      <script type="text/javascript" src="js/jquery-ui.min.js"></script>    
+      
+      <title>Data Supplier</title>
 	  <style type="text/css">
 	  	*, *:before, *:after {
   box-sizing: border-box;
@@ -60,7 +34,7 @@ body{
 }
 nav ul {
 	background: #0099ff; 
-	padding:0px 179px;
+	padding:13px 28.5px;
 	border-radius: 0px;  
 	list-style: none;
 	position: relative;
@@ -81,7 +55,7 @@ nav ul:after {
 			}
 		
 		nav ul li a {
-			display: block; padding: 9px 40px;
+			display: block; padding: 0.7px 45px;
 			color: #fff; text-decoration: none;
 		}
 			
@@ -188,7 +162,8 @@ padding: 20px;
 }
 .footer {
     color: #ffffff;
-    position: absolute;
+    position: relative;
+	top:138px;
     bottom: 0;
     left: 0;
     right: 0;
@@ -229,24 +204,18 @@ box-shadow: 0 0 20px blue;
    <body class="size-1140">
       <!-- TOP NAV WITH LOGO -->  
       <header>
-        	<nav class="fixed-top nav navul nav ul:after nav ul li nav ul li:hover nav ul li:hover a nav ul li a nav ul ul nav ul ul li nav ul ul li a nav ul ul li a:hover nav ul ul ul">
-	
-<ul>
-<li><a  href = "<?php echo base_url()?>tampiladminku/home"  rel='stylesheet' type='text/css'>HOME</a></li>
-	
-	<li> <a  href = "<?php echo base_url()?>tampiladminku/datapemesan"  rel='stylesheet' type='text/css'>PEMESANAN</a></li>
-		
-		<li><a  href = "<?php echo base_url()?>inputadmin/index"  rel='stylesheet' type='text/css'>BARANG</a></li>
+        <nav class="fixed-top nav navul nav ul:after nav ul li nav ul li:hover nav ul li:hover a nav ul li a nav ul ul nav ul ul li nav ul ul li a nav ul ul li a:hover nav ul ul ul">
+		<ul>
+			<li><a  href = "<?php echo base_url()?>loginku/home"  rel='stylesheet' type='text/css'>HOME</a></li>
+			<li><a  href = "<?php echo base_url()?>inputadmin/index"  rel='stylesheet' type='text/css'>BARANG</a></li>
 			<li><a  href = "<?php echo base_url()?>supplierku/index"  rel='stylesheet' type='text/css'>SUPPLIER</a></li>
-		
-		
-		
-		<li><a  href = "<?php echo base_url()?>kurirku/index"  rel='stylesheet' type='text/css'>KURIR</a></li>		
-		<li><a href="<?php echo base_url('loginku/logout'); ?>">LOG OUT</a><li>
-		<li><a href="#" onclick='myFunction()'rel='stylesheet' type='text/css'><p> <?php echo $this->session->userdata("nama"); ?> </p><a></li>
-		
+			<li><a  href = "<?php echo base_url()?>kurirku/index"  rel='stylesheet' type='text/css'>KURIR</a></li>	
+			<li> <a  href = "<?php echo base_url()?>tampiladminku/datapemesan"  rel='stylesheet' type='text/css'>PEMESANAN</a></li>	
+			<li> <a  href = "<?php echo base_url()?>pengirimku/index"  rel='stylesheet' type='text/css'>PENGIRIMAN</a></li>	
+			<li><a href="#"><?php echo $this->session->userdata("nama"); ?><a></li>	
+			<li><a href="<?php echo base_url()?>loginku/logout">LOG OUT</a><li>
 		</ul>
- </nav>
+		</nav>
       </header>
 	  <div id="page-wrap" align ="center">
 	<div class="content"> 
@@ -254,7 +223,11 @@ box-shadow: 0 0 20px blue;
 	<h2><center>DATA SUPPLIER</center></h2>
 	<br><br>
 	<center><div class="button">
-  <ul><?php echo anchor('supplierku/tambah','Tambah Data'); ?></a></ul></div></center>
+	<ul><a href="<?php echo base_url()?>supplierku/tambah">Tambah Data</a></ul></div></center>
+  <form method="get" action="cari">
+		<p align="center"><input type="text"  name="data" >
+		<input type="submit" name="send"  value="Cari">
+		</form>
 	<table style="margin:20px auto;" border="1" >
 		<tr>
 			<th>No</th>
@@ -262,6 +235,7 @@ box-shadow: 0 0 20px blue;
 			<th>Nama Supplier</th>
 			<th>Alamat Supplier</th>
 			<th>No Hp Supplier</th>
+			<th>Opsi</th>
 			
 		</tr>
 		<?php 
@@ -275,14 +249,12 @@ box-shadow: 0 0 20px blue;
 			<td><?php echo $u->ALAMAT ?></td>
 			<td><?php echo $u->NO_HP_PEMASOK ?></td>
 			<td>
-			      <?php echo anchor('supplierku/edit/'.$u->ID_PEMASOK,'Edit'); ?>
-                              <?php echo anchor('supplierku/hapus/'.$u->ID_PEMASOK,'Hapus'); ?>
+			    <?php echo anchor('supplierku/edit/'.$u->ID_PEMASOK,'Edit'); ?>
+                <?php echo anchor('supplierku/hapus/'.$u->ID_PEMASOK,'Hapus'); ?>
 			</td>
 		</tr>
 		<?php } ?>
 	</table>
- 
- 
  
  </div>
  </div>

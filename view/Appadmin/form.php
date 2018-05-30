@@ -1,7 +1,13 @@
+<!DOCTYPE html>
 <html>
-
-  <style type="text/css">
-	  	*, *:before, *:after {
+<head>
+	<title>Data Barang</title>
+	 <style type="text/css">
+  .file {
+    visibility: hidden;
+    position: absolute;
+  }
+  	*, *:before, *:after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -27,7 +33,7 @@ body{
 }
 nav ul {
 	background: #0099ff; 
-	padding:0px 179px;
+	padding:13px 28.5px;
 	border-radius: 0px;  
 	list-style: none;
 	position: relative;
@@ -48,7 +54,7 @@ nav ul:after {
 			}
 		
 		nav ul li a {
-			display: block; padding: 9px 40px;
+			display: block; padding: 0.7px 45px;
 			color: #fff; text-decoration: none;
 		}
 			
@@ -73,56 +79,7 @@ nav ul:after {
 	nav ul ul ul {
 		position: absolute; left: 100%;  top:0;
 	}
-	.line:after, nav:after, .center:after, .box:after, .margin:after, .margin2x:after {
-  clear:both;
-  content:".";
-  display:block;
-  height:0;
-  line-height:0;
-  overflow: hidden;
-  visibility:hidden;
-}
-img {
-  border:0;
-  display:block;
-  height:auto;
-  max-width:100%;
-  width:auto;
-}
-.size-960 .line,.size-1140 .line,.size-1280 .line {
-  margin:0 auto;
-  padding:0 0.625rem;
-}
-.center {
-  float:none;
-  margin:0 auto;
-  display:block;
-}
- .hide-l,.hide-m {
-	 display:block!important;
-	 }
-  .hide-s {
-	  display:none!important;
-	  }
-.size-960 .line {
-	max-width:60rem;
-	}
-.size-1140 .line {
-	max-width:71.25rem;
-	}
-.size-1280 .line {
-	max-width:80rem;
-	}
-.size-960.align-content-left .line,.size-1140.align-content-left .line,.size-1280.align-content-left .line {
-	margin-left:0;
-	}
-	.line {
-		clear:left;
-		}
-.line .line {
-	padding:0;
-	}
-#footer_bottom {
+		#footer_bottom {
 background-color: #0e639d;
 padding-top: 13px;
 padding-bottom: 17px;
@@ -155,86 +112,131 @@ padding: 20px;
 }
 .footer {
     color: #ffffff;
-    position: absolute;
+    position: relative;
+	top:107px;
     bottom: 0;
     left: 0;
     right: 0;
     padding: 20px;
     background-color: #9e9e9e;
     text-align: center;
-}	
+}
+.cards {
+	width: 1000px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  	border-radius: 2px;
+  	overflow: hidden;
+  	margin: 0 auto;
+}
+.cards-image {
+	width: 100%;
+}
+.cards-image img {
+	width: 100%
+}
+.cards-box {
+	padding: 15px;
+}
 
-		
-	  </style>
+.button{
+    width: 100%;
+    height: 50px;
+  }
+  .left{
+    float: left;
+    display: block;
+  }
+  .right{
+    float: right;
+    display: block;
+  }
+.button ul a{
+  padding: 10px;
+  background: rgb(116, 181, 12);
+  color: white;
+}
+#page-wrap{
+width: 490px;
+margin: 50px auto;
+padding: 20px;
+background: whitesmoke;
+-moz-box-shadow: 0 0 20px blue;
+-webkit-box-shadow: 0 0 20px blue;
+box-shadow: 0 0 20px blue;
+}
+body{
+	background-color:#FFFFF;
+	-webkit-background-size: cover;
+-moz-background-size: cover;
+background-size: 100%;
+	
+}
 
-   <!-- TOP NAV WITH LOGO -->  
-      <header>
-        	<nav class="fixed-top nav navul nav ul:after nav ul li nav ul li:hover nav ul li:hover a nav ul li a nav ul ul nav ul ul li nav ul ul li a nav ul ul li a:hover nav ul ul ul">
-	
-<ul>
-<li><a  href = "<?php echo base_url()?>tampiladminku/home"  rel='stylesheet' type='text/css'>HOME</a></li>
-	
-	<li> <a  href = "<?php echo base_url()?>tampiladminku/datapemesan"  rel='stylesheet' type='text/css'>PEMESANAN</a></li>
-		
+  </style>
+	<nav class="fixed-top nav navul nav ul:after nav ul li nav ul li:hover nav ul li:hover a nav ul li a nav ul ul nav ul ul li nav ul ul li a nav ul ul li a:hover nav ul ul ul">
+	<ul>
+		<li><a  href = "<?php echo base_url()?>loginku/home"  rel='stylesheet' type='text/css'>HOME</a></li>
 		<li><a  href = "<?php echo base_url()?>inputadmin/index"  rel='stylesheet' type='text/css'>BARANG</a></li>
-		
-			<li><a  href = "<?php echo base_url()?>supplierku/index"  rel='stylesheet' type='text/css'>SUPPLIER</a></li>
-		
-		
-		
-		<li><a  href = "<?php echo base_url()?>kurirku/index"  rel='stylesheet' type='text/css'>KURIR</a></li>	
-<li><a href="<?php echo base_url('loginku/logout'); ?>">LOG OUT</a><li>
-		<li><a href="#" onclick='myFunction()'rel='stylesheet' type='text/css'><p> <?php echo $this->session->userdata("nama"); ?> </p><a></li>		
-		
-		
-		</ul>
- </nav>
-      </header>
-<br><br><br>	  
-	  <body>
-	  
-	  <h1>Tambah Stok Barang</h1>
-<!-- Menampilkan Error jika validasi tidak valid -->
-<div style="color: red;"><?php echo (isset($message))? $message : ""; ?></div>
-<?php echo form_open("inputadmin/tambah", array('enctype'=>'multipart/form-data')); ?>
-  <table cellpadding="8">
-      <tr>
-      <td>id barang</td>
-      <td><input type="varchar" name="ID_BARANG" value="<?php echo set_value('ID_BARANG'); ?>"></td>
-    </tr>
-	 <tr>
-      <td>id supplier</td>
-      <td><input type="varchar" name="ID_PEMASOK" value="<?php echo set_value('ID_PEMASOK'); ?>"></td>
-    </tr>
-	<tr>
-      <td>nama barang</td>
-      <td><input type="char" name="NAMA_BARANG" value="<?php echo set_value('NAMA_BARANG'); ?>"></td>
-    </tr>
-	<tr>
-      <td>jenis barang</td>
-      <td><input type="char" name="JENIS_BARANG" value="<?php echo set_value('JENIS_BARANG'); ?>"></td>
-    </tr>
-	<tr>
-      <td>harga satuan</td>
-      <td><input type="text" name="HARGA_SATUAN" value="<?php echo set_value('HARGA_SATUAN'); ?>"></td>
-    </tr>
-	<tr>
-      <td>stock barang</td>
-      <td><input type="text" name="STOCK_BARANG" value="<?php echo set_value('STOCK_BARANG'); ?>"></td>
-    </tr>
-    <tr>
-      <td>Gambar</td>
-      <td><input type="file" name="input_gambar"></td>
-    </tr>
-  </table>
-    
-<br><br>
-  <input type="submit" name="submit" value="Simpan">
-  <a href="<?php echo base_url(); ?>"><input type="button" value="Batal"></a>
-<?php echo form_close(); ?>
+		<li><a  href = "<?php echo base_url()?>supplierku/index"  rel='stylesheet' type='text/css'>SUPPLIER</a></li>
+		<li><a  href = "<?php echo base_url()?>kurirku/index"  rel='stylesheet' type='text/css'>KURIR</a></li>
+		<li> <a  href = "<?php echo base_url()?>tampiladminku/datapemesan"  rel='stylesheet' type='text/css'>PEMESANAN</a></li>
+		<li><a  href = "<?php echo base_url()?>pengirimku/index"  rel='stylesheet' type='text/css'>PENGIRIMAN</a></li>
+		<li><a href="#"><?php echo $this->session->userdata("nama"); ?><a></li>	
+		<li><a href="<?php echo base_url()?>loginku/logout">LOG OUT</a><li>
+	</ul>
+	</nav>
+ <br>
+</head>
+<body>
+<div class="content"> 
+ <div id="page-wrap" align ="center">
+	<center>
+		<h2>Tambah Data Barang</h2>
+	</center>
+		<table style="margin:20px auto;">
+		<tr>
+			<td>Id Barang</td>
+			<td><input type="varchar" name="ID_BARANG" value="<?=$id;?>" readonly></td>
+		</tr>
+		<tr>
+			<td>Nama Barang</td>
+			<td><input type="char" name="NAMA_BARANG" required=""></td>
+		</tr>
+		<tr>
+			<td>Nama Pemasok</td>
+			<td><select name="ID_PEMASOK">
+					<option value="0">-PILIH-</option>
+					<?php foreach ($nama_pemasok as $db){ ?>
+					<option value="<?php echo $db->ID_PEMASOK;?>"> <?php echo $db->NAMA_PEMASOK;?> </option>
+					<?php }?>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Harga Satuan</td>
+			<td><input type="char" name="HARGA_SATUAN" required=""></td>
+		</tr>
+		<tr>
+			<td>Jumlah Barang</td>
+			<td><input type="number" name="JUMLAH" required="" min="0"></td>
+		</tr>
+		<tr>
+			<td>File</td>
+			<td><input type="file" name="input_gambar" required=""></td>
+		</tr>
+		<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+		<tr>
+			<td></td>
+			<td><input type="submit" name="submit" value="Tambah"></td>
+		</tr>
+		</table>
+	</form>	
+	</div></div>
 </body>
-  <footer>
-         <div id="footer_bottom" class="footer-bottom footer">
+
+<footer>
+    <div id="footer_bottom" class="footer-bottom footer">
 <div class="container">
 <div class="row">
 <div class="col-md-12">
@@ -243,18 +245,4 @@ padding: 20px;
 </div>
 </div>
       </footer>
-      <script type="text/javascript" src="js/responsee.js"></script> 
-      <script type="text/javascript" src="owl-carousel/owl.carousel.js"></script>   
-      <script type="text/javascript">
-         jQuery(document).ready(function($) {  
-           $("#owl-demo2").owlCarousel({
-           	slideSpeed : 300,
-           	autoPlay : true,
-           	navigation : false,
-           	pagination : true,
-           	singleItem:true
-           });
-         });	
-          
-      </script>  
 </html>

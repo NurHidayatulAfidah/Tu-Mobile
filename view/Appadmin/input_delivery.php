@@ -1,7 +1,7 @@
 <html>
 	<head>
-		<title>Input Mahasiswa</title>
-		
+		<title>Data Pemesanan</title>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<style type="text/css" >
 		*, *:before, *:after {
   box-sizing: border-box;
@@ -22,10 +22,14 @@ nav {
 	text-align: left;
 	
 }
-
+body{
+	background-color:#00FFFF;
+	background: url('galon.jpg');
+	
+}
 nav ul {
 	background: #0099ff; 
-	padding:0px 179px;
+padding:13px 28.5px;
 	border-radius: 0px;  
 	list-style: none;
 	position: relative;
@@ -46,7 +50,7 @@ nav ul:after {
 			}
 		
 		nav ul li a {
-			display: block; padding: 9px 40px;
+			display: block; padding: 0.7px 45px;
 			color: #fff; text-decoration: none;
 		}
 			
@@ -113,7 +117,8 @@ padding: 20px;
 }
 .footer {
     color: #ffffff;
-    position: absolute;
+  position: relative;
+	top:155px;
     bottom: 0;
     left: 0;
     right: 0;
@@ -146,47 +151,67 @@ box-shadow: 0 0 20px blue;
 	<body>
 	<nav class="fixed-top nav navul nav ul:after nav ul li nav ul li:hover nav ul li:hover a nav ul li a nav ul ul nav ul ul li nav ul ul li a nav ul ul li a:hover nav ul ul ul">
 	
-<ul>
-<li><a  href = "<?php echo base_url()?>tampiladminku/home"  rel='stylesheet' type='text/css'>HOME</a></li>
-	
-	<li> <a  href = "<?php echo base_url()?>tampiladminku/datapemesan"  rel='stylesheet' type='text/css'>PEMESANAN</a></li>
-		
+	<ul>
+		<li><a  href = "<?php echo base_url()?>loginku/home"  rel='stylesheet' type='text/css'>HOME</a></li>
 		<li><a  href = "<?php echo base_url()?>inputadmin/index"  rel='stylesheet' type='text/css'>BARANG</a></li>
-		
 		<li><a  href = "<?php echo base_url()?>supplierku/index"  rel='stylesheet' type='text/css'>SUPPLIER</a></li>
-		
-		
 		<li><a  href = "<?php echo base_url()?>kurirku/index"  rel='stylesheet' type='text/css'>KURIR</a></li>	
-		<li><a href="<?php echo base_url('loginku/logout'); ?>">LOG OUT</a><li>
-		<li><a href="#" onclick='myFunction()'rel='stylesheet' type='text/css'><p> <?php echo $this->session->userdata("nama"); ?> </p><a></li>
-		</ul>
+		<li> <a  href = "<?php echo base_url()?>tampiladminku/datapemesan"  rel='stylesheet' type='text/css'>PEMESANAN</a></li>	
+		<li> <a  href = "<?php echo base_url()?>pengirimku/index"  rel='stylesheet' type='text/css'>PENGIRIMAN</a></li>	
+		<li><a href="#"><?php echo $this->session->userdata("nama"); ?><a></li>	
+		<li><a href="<?php echo base_url()?>loginku/logout">LOG OUT</a><li>	
+	</ul>
  </nav>
- <br>
-		<h4 align="center">Tambah Data Pemesan Barang</h4>
-		
-		<div align="center">
+ 
+ <div class="content"> 
+ <div id="page-wrap">
+		<h4 align="center">Tambah Data Pemesanan</h4><br/>
 		<p>
-			<form method="post" action="input">
-        Id Pemesanan<br/><input type="varchar" name="ID_PEMESANAN" size="30" maxlength="10" value="<?php if(isset($data)) { echo $data[0]->ID_PEMESANAN; } ?>"><br/>
-		Nama Pemesan<br/><select name="NAMA_PENGGUNA">
-        <?php foreach ($namapengguna as $row){ ?>
-        	<option value="<?php echo $row->ID_PENGGUNA;?>"><?php echo $row->NAMA_PENGGUNA;?></option>
-        	<?php }?></select><br/>
-		Nama Barang<br/>
-		<select name="NAMA_BARANG">
-        <?php foreach ($namabarang as $row){ ?>
-        	<option value="<?php echo $row->ID_BARANG;?>"><?php echo $row->NAMA_BARANG;?></option>
-        	<?php }?>
-        </select><br/>
-		 Jumlah<br/><input type="int" name="JUMLAH" size="30" maxlength="11" value="<?php if(isset($data)) { echo $data[0]->JUMLAH; } ?>"><br/>
-      <br><br>
-		
-        <input type="submit" name="btnTambah" value="Simpan"/>
-    </form>
+			<form method="post" action="input_aksi" align="left">
+				<table style="margin:20px auto;">
+					<tr>
+						<td>Id Pemesanan</td>
+						<td><input type="varchar" name="ID_PEMESANAN" value="<?=$id;?>" readonly></td>
+					</tr>
+					<tr>
+						<td>Nama Pemesan</td>
+						<td><select name="ID_PENGGUNA">
+							<option value="0">-PILIH-</option>
+							<?php foreach ($namapengguna as $data){ ?>
+							<option value="<?php echo $data->ID_PENGGUNA;?>"> <?php echo $data->NAMA_PENGGUNA;?> </option>
+							<?php }?>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Nama Barang</td>
+						<td><select name="ID_BARANG" id="barang">
+							<option value="0">-PILIH-</option>
+							<?php foreach ($namabarang as $row){ ?>
+							<option value="<?php echo $row->ID_BARANG;?>"> <?php echo $row->NAMA_BARANG;?> </option>
+							<?php }?>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="varchar" name="HRG_SATUAN" id="hrg"><td>
+						
+					</tr>
+					<tr>
+						<td>Jumlah</td>
+						<td><input type="number" name="JUMLAH" required="" min="0"></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="submit" name="submit" value="Tambah"></td>
+					</tr>
+				</table>
+			</form>
 		</p>
-		</div>
-	</body>
-	
+	</div>
+	</div>
+</body> 
+
 	 <footer>
          <div id="footer_bottom" class="footer-bottom footer" >
 <div class="container">

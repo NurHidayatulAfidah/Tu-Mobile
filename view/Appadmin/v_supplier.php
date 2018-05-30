@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Membuat CRUD dengan CodeIgniter | MalasNgoding.com</title>
+	<title>Data Supplier</title>
 	 <style type="text/css">
   .file {
     visibility: hidden;
@@ -33,7 +33,7 @@ body{
 }
 nav ul {
 	background: #0099ff; 
-	padding:0px 179px;
+	padding:13px 28.5px;
 	border-radius: 0px;  
 	list-style: none;
 	position: relative;
@@ -54,7 +54,7 @@ nav ul:after {
 			}
 		
 		nav ul li a {
-			display: block; padding: 9px 40px;
+			display: block; padding: 0.7px 45px;
 			color: #fff; text-decoration: none;
 		}
 			
@@ -174,24 +174,18 @@ background-size: 100%;
 }
 
   </style>
-<nav class="fixed-top nav navul nav ul:after nav ul li nav ul li:hover nav ul li:hover a nav ul li a nav ul ul nav ul ul li nav ul ul li a nav ul ul li a:hover nav ul ul ul">
-	
-<ul>
-<li><a  href = "<?php echo base_url()?>tampiladminku/home"  rel='stylesheet' type='text/css'>HOME</a></li>
-	
-	<li> <a  href = "<?php echo base_url()?>tampiladminku/datapemesan"  rel='stylesheet' type='text/css'>PEMESANAN</a></li>
-		
+	<nav class="fixed-top nav navul nav ul:after nav ul li nav ul li:hover nav ul li:hover a nav ul li a nav ul ul nav ul ul li nav ul ul li a nav ul ul li a:hover nav ul ul ul">
+	<ul>
+		<li><a  href = "<?php echo base_url()?>loginku/home"  rel='stylesheet' type='text/css'>HOME</a></li>
 		<li><a  href = "<?php echo base_url()?>inputadmin/index"  rel='stylesheet' type='text/css'>BARANG</a></li>
-
 		<li><a  href = "<?php echo base_url()?>supplierku/index"  rel='stylesheet' type='text/css'>SUPPLIER</a></li>
-		
-		
-		<li><a  href = "<?php echo base_url()?>kurirku/index"  rel='stylesheet' type='text/css'>KURIR</a></li>		
-		<li><a href="<?php echo base_url('loginku/logout'); ?>">LOG OUT</a><li>
-		<li><a href="#" onclick='myFunction()'rel='stylesheet' type='text/css'><p> <?php echo $this->session->userdata("nama"); ?> </p><a></li>
-		
-		</ul>
- </nav>
+		<li><a  href = "<?php echo base_url()?>kurirku/index"  rel='stylesheet' type='text/css'>KURIR</a></li>	
+		<li> <a  href = "<?php echo base_url()?>tampiladminku/datapemesan"  rel='stylesheet' type='text/css'>PEMESANAN</a></li>	
+		<li> <a  href = "<?php echo base_url()?>pengirimku/index"  rel='stylesheet' type='text/css'>PENGIRIMAN</a></li>	
+		<li><a href="#"><?php echo $this->session->userdata("nama"); ?><a></li>	
+		<li><a href="<?php echo base_url()?>loginku/logout">LOG OUT</a><li>
+	</ul>
+	</nav>
  <br>
 </head>
 <body>
@@ -204,19 +198,19 @@ background-size: 100%;
 		<table style="margin:20px auto;">
 		<tr>
 				<td>Id Supplier</td>
-				<td><input type="varchar" name="ID_PEMASOK"></td>
+				<td><input type="varchar" name="ID_PEMASOK" value="<?=$id;?>" readonly></td>
 			</tr>
 			<tr>
 				<td>Nama Supplier</td>
-				<td><input type="char" name="NAMA_PEMASOK"></td>
+				<td><input type="char" name="NAMA_PEMASOK" required=""></td>
 			</tr>
 			<tr>
 				<td>Alamat Supplier</td>
-				<td><input type="char" name="ALAMAT"></td>
+				<td><input type="char" name="ALAMAT" required=""></td>
 			</tr>
 			<tr>
 				<td>No Hp Supplier</td>
-				<td><input type="varchar" name="NO_HP_PEMASOK"></td>
+				<td><input type="varchar" name="NO_HP_PEMASOK" required=""></td>
 			</tr>
 			<tr>
 				<td></td>

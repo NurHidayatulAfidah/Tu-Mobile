@@ -1,14 +1,14 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 	<meta charset="utf-8">
-		<title>List Pemesan</title>
-		
-		<style type="text/css" >
-		
-		*, *:before, *:after {
+		<title>Data Barang</title>
+		<style type="text/css">
+  .file {
+    visibility: hidden;
+    position: absolute;
+  }
+  	*, *:before, *:after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -34,7 +34,7 @@ body{
 }
 nav ul {
 	background: #0099ff; 
-	padding:0px 178px;
+	padding:13px 28.5px;
 	border-radius: 0px;  
 	list-style: none;
 	position: relative;
@@ -55,7 +55,7 @@ nav ul:after {
 			}
 		
 		nav ul li a {
-			display: block; padding: 9px 40px;
+			display: block; padding: 0.7px 45px;
 			color: #fff; text-decoration: none;
 		}
 			
@@ -80,8 +80,7 @@ nav ul:after {
 	nav ul ul ul {
 		position: absolute; left: 100%;  top:0;
 	}
-		
-#footer_bottom {
+		#footer_bottom {
 background-color: #0e639d;
 padding-top: 13px;
 padding-bottom: 17px;
@@ -114,7 +113,8 @@ padding: 20px;
 }
 .footer {
     color: #ffffff;
-    position: absolute;
+    position: relative;
+	top:133px;
     bottom: 0;
     left: 0;
     right: 0;
@@ -141,24 +141,17 @@ padding: 20px;
 }
 
 .button{
-    width: 100%;
+    width: 80%;
     height: 50px;
   }
-  .left{
-    float: left;
-    display: block;
-  }
-  .right{
-    float: right;
-    display: block;
-  }
 .button ul a{
-  padding: 10px;
+  width:50%;
+  padding: 5px;
   background: rgb(116, 181, 12);
   color: white;
 }
 #page-wrap{
-width: 590px;
+width: 900px;
 margin: 50px auto;
 padding: 20px;
 background: whitesmoke;
@@ -166,105 +159,77 @@ background: whitesmoke;
 -webkit-box-shadow: 0 0 20px blue;
 box-shadow: 0 0 20px blue;
 }
-</style>
+
+  </style>
 	</head>
-	<body >
-	
+
+	<body>
 	<nav class="fixed-top nav navul nav ul:after nav ul li nav ul li:hover nav ul li:hover a nav ul li a nav ul ul nav ul ul li nav ul ul li a nav ul ul li a:hover nav ul ul ul">
-	
-<ul>
-<li><a  href = "<?php echo base_url()?>tampiladminku/home"  rel='stylesheet' type='text/css'>HOME</a></li>
-	
-	<li> <a  href = "<?php echo base_url()?>tampiladminku/datapemesan"  rel='stylesheet' type='text/css'>PEMESANAN</a></li>
-		
+	<ul>
+		<li><a  href = "<?php echo base_url()?>loginku/home"  rel='stylesheet' type='text/css'>HOME</a></li>
 		<li><a  href = "<?php echo base_url()?>inputadmin/index"  rel='stylesheet' type='text/css'>BARANG</a></li>
+		<li><a  href = "<?php echo base_url()?>supplierku/index"  rel='stylesheet' type='text/css'>SUPPLIER</a></li>
+		<li><a  href = "<?php echo base_url()?>kurirku/index"  rel='stylesheet' type='text/css'>KURIR</a></li>
+		<li> <a  href = "<?php echo base_url()?>tampiladminku/datapemesan"  rel='stylesheet' type='text/css'>PEMESANAN</a></li>
+		<li><a  href = "<?php echo base_url()?>pengirimku/index"  rel='stylesheet' type='text/css'>PENGIRIMAN</a></li>
+		<li><a href="#"><?php echo $this->session->userdata("nama"); ?><a></li>	
+		<li><a href="<?php echo base_url()?>loginku/logout">LOG OUT</a><li>	
+	</ul>
+	</nav>
+	<div class="content"> 
+		<div id="page-wrap" align ="center">
+			<p><h2 align="center" >Data Barang</h2></p><br><br>
+			<p align="center"><div class="button">
+				<ul><a href="<?php echo base_url("inputadmin/tambah"); ?>" >Tambah Barang</a></ul></div>
+			</p>
+				
+			<p align="center">
+			<form method="get" action="<?php echo site_url('inputadmin/cari/');?>">
+			<p align="center"><input type="text" name="cari">
+			<input type="submit" name="send" value="Cari">
+			</form>
+		<br><br>
 		
-			<li><a  href = "<?php echo base_url()?>supplierku/index"  rel='stylesheet' type='text/css'>SUPLLIER</a></li>
-		
-		
-		
-		<li><a  href = "<?php echo base_url()?>kurirku/index"  rel='stylesheet' type='text/css'>KURIR</a></li>	
-<li><a href="<?php echo base_url('loginku/logout'); ?>">LOG OUT</a><li>
-		<li><a href="#" onclick='myFunction()'rel='stylesheet' type='text/css'><p> <?php echo $this->session->userdata("nama"); ?> </p><a></li>		
-		
-		
-		</ul>
- </nav>
- <div class="content">
- 
-     <h1>Daftar Kurir :</h1>
-	 <hr></hr>
-	 <br>
-	 <form method="get" action="kurir">
-		<p align="center"><input type="text" name="data">
-		<input type="submit" name="send" value="Cari">
-		</form>
-	 <br><br>
-	 
-	 <div class="cards">
-	 <form action="<?php echo base_url(). 'kurirku/delete'; ?>" method="post">
-	<table id="tt" style="width:700px;height:200px "
- title="DataGrid - CardView" singleSelect="true" fitColumns="true" remoteSort="false"
- url="data.php" pagination="true" sortOrder="desc" sortName="id">
- <thead>
- 
- <tr>
-<th width="120" >KURIR</th>
-<th width="120" >ID KURIR</th>
- <th  width="200" >NAMA KURIR</th>
- <th  width="200" >ALAMAT KURIR</th>
- <th  width="200" >NO HANDPHONE</th>
- 
- </tr>
-<?php
-if( ! empty($gambar)){ // Jika data pada database tidak sama dengan empty (alias ada datanya)
-  foreach($gambar as $data){ // Lakukan looping pada variabel gambar dari controller
-    echo "<tr>";
-    echo "<td><center><img src='".base_url("images/".$data->nama_file)."' width='100' height='100'></center></td>";
-    //echo "<td>".$data->nama_file."</td>";
-	echo "<td> <center>".$data->ID_KURIR."</center></td>";
-	echo "<td> <center>".$data->NAMA_KURIR."</center></td>";
-	echo "<td> <center>".$data->ALAMAT_KURIR."</center></td>";
-	echo "<td> <center>".$data->NO_HP_KURIR."</center></td>";
-	echo "<td><input type='image' src='".base_url("tam.jpg")."' value='Hapus Kurir'></td>";
-    echo "</tr>";
-  }
-}else{ // Jika data tidak ada
-  echo "<tr><td colspan='5'>Data tidak ada</td></tr>";
-}
-?> 
-</thead>
- </table>
- </form>
+		<table border="1" align="center">
+			<tr>
+				<th>No</th>
+				<th>Gambar Produk</th>
+				<th>Id Barang</th>
+				<th>Nama Barang</th>
+				<th>Harga Satuan</th>
+				<th>Stock Barang</th>
+				<th>Nama Pemasok</th>
+				<th>Opsi</th>
+			</tr>
+
+			<?php
+			if (! empty($data)){
+				$nom = 1;
+				foreach ($data as $db){ ?>
+			<tr>
+				<td align="center"><?php echo $nom++;?></td>
+				<?php  echo "<td><center><img src='".base_url("images/".$db->file)."' width='150' height='100'></center></td>";?>
+				<td align="left"><?php echo $db->ID_BARANG; ?></td>
+				<td align="left"><?php echo $db->NAMA_BARANG; ?></td>
+				<td align="right">Rp <?php echo $db->HARGA_SATUAN;?></td>
+				<td align="center"><?php echo $db->JUMLAH; ?></td>
+				<td align="center"><?php echo $db->NAMA_PEMASOK; ?></td>
+				<td>
+					<?php echo anchor('inputadmin/edit/'.$db->ID_BARANG, 'Tambah Stock');?>
+					<?php echo anchor('inputadmin/edit1/'.$db->ID_BARANG, 'Edit');?>
+					<?php echo anchor('inputadmin/hapus/'.$db->ID_BARANG, 'Hapus');?>
+				</td>
+			</tr>
+			<?php }
+			} else{
+				echo "<tr><td colspan='8'>Data tidak ada</td></tr>";
+			}; ?>
+		</table>
+
  </div>
 </div>
-<div class="button">
-<br><br><br><br>
-  <ul class="left">
-<a href="<?php echo base_url("index.php/kurirku/tambah"); ?>" ><input type='image' value='Tambah Kurir'></a></ul></div><br><br>
- </thead>
- </table>
- </form>
- </div>
-</div>
-</div></div></div>
-	 
-	 
-	 
-	 
-	 
-	 </div>
-	 </div>
-	 
-	 
-	 
-	 
-	 
-     
-	</body>
-	 <!-- FOOTER -->   
-      <footer>
-         <div id="footer_bottom" class="footer-bottom footer">
+<footer>
+    <div id="footer_bottom" class="footer-bottom footer">
 <div class="container">
 <div class="row">
 <div class="col-md-12">
@@ -272,6 +237,7 @@ if( ! empty($gambar)){ // Jika data pada database tidak sama dengan empty (alias
 </div>
 </div>
 </div>
+</body>
       </footer>
       <script type="text/javascript" src="js/responsee.js"></script> 
       <script type="text/javascript" src="owl-carousel/owl.carousel.js"></script>   

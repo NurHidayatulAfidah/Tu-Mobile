@@ -1,13 +1,12 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
-	<head>
-	<meta charset="utf-8">
-		<title>Data Pemesanan</title>
-		
-		<style type="text/css" >
-		*, *:before, *:after {
+<html>
+<head>
+	<title>Data Kurir</title>
+	 <style type="text/css">
+  .file {
+    visibility: hidden;
+    position: absolute;
+  }
+  	*, *:before, *:after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -28,12 +27,12 @@ nav {
 }
 body{
 	background-color:#00FFFF;
-	background: url('https://img.clipart.guru/unloading-3d-working-people-workers-unloading-boxes-from-a-truck-isolated-white-backgrounddelivery-truck-unloading-clipart-1300_1191.jpg') ;
+	background: url('galon.jpg');
 	
 }
 nav ul {
 	background: #0099ff; 
-padding:13px 28.5px;
+	padding:13px 28.5px;
 	border-radius: 0px;  
 	list-style: none;
 	position: relative;
@@ -79,16 +78,7 @@ nav ul:after {
 	nav ul ul ul {
 		position: absolute; left: 100%;  top:0;
 	}
-		#page-wrap{
-width: 900px;
-margin: 50px auto;
-padding: 20px;
-background: whitesmoke;
--moz-box-shadow: 0 0 20px blue;
--webkit-box-shadow: 0 0 20px blue;
-box-shadow: 0 0 20px blue;
-}
-#footer_bottom {
+		#footer_bottom {
 background-color: #0e639d;
 padding-top: 13px;
 padding-bottom: 17px;
@@ -121,8 +111,7 @@ padding: 20px;
 }
 .footer {
     color: #ffffff;
-    position: relative;
-	top:165px;
+    position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
@@ -130,24 +119,60 @@ padding: 20px;
     background-color: #9e9e9e;
     text-align: center;
 }
+.cards {
+	width: 1000px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  	border-radius: 2px;
+  	overflow: hidden;
+  	margin: 0 auto;
+}
+.cards-image {
+	width: 100%;
+}
+.cards-image img {
+	width: 100%
+}
+.cards-box {
+	padding: 15px;
+}
+
 .button{
     width: 100%;
     height: 50px;
   }
-  
+  .left{
+    float: left;
+    display: block;
+  }
+  .right{
+    float: right;
+    display: block;
+  }
 .button ul a{
-  padding: 5px;
+  padding: 10px;
   background: rgb(116, 181, 12);
   color: white;
 }
-
-
-</style>
-	</head>
-	<body >
+#page-wrap{
+width: 490px;
+margin: 50px auto;
+padding: 20px;
+background: whitesmoke;
+-moz-box-shadow: 0 0 20px blue;
+-webkit-box-shadow: 0 0 20px blue;
+box-shadow: 0 0 20px blue;
+}
+body{
+	background-color:#FFFFFF;
+	-webkit-background-size: cover;
+-moz-background-size: cover;
+background-size: 100%;
 	
+}
+
+  </style>
 	<nav class="fixed-top nav navul nav ul:after nav ul li nav ul li:hover nav ul li:hover a nav ul li a nav ul ul nav ul ul li nav ul ul li a nav ul ul li a:hover nav ul ul ul">
-	
 	<ul>
 		<li><a  href = "<?php echo base_url()?>loginku/home"  rel='stylesheet' type='text/css'>HOME</a></li>
 		<li><a  href = "<?php echo base_url()?>inputadmin/index"  rel='stylesheet' type='text/css'>BARANG</a></li>
@@ -155,62 +180,45 @@ padding: 20px;
 		<li><a  href = "<?php echo base_url()?>kurirku/index"  rel='stylesheet' type='text/css'>KURIR</a></li>	
 		<li> <a  href = "<?php echo base_url()?>tampiladminku/datapemesan"  rel='stylesheet' type='text/css'>PEMESANAN</a></li>	
 		<li> <a  href = "<?php echo base_url()?>pengirimku/index"  rel='stylesheet' type='text/css'>PENGIRIMAN</a></li>	
-		<li><a href="#"><?php echo $this->session->userdata("nama"); ?><a></li>
-		<li><a href="<?php echo base_url()?>loginku/logout">LOG OUT</a><li>		
+		<li><a href="#"><?php echo $this->session->userdata("nama"); ?><a></li>	
+		<li><a href="<?php echo base_url()?>loginku/logout">LOG OUT</a><li>
 	</ul>
- </nav>
-
- <div class="content"> 
+	</nav>
+ <br>
+</head>
+<body>
+<div class="content"> 
  <div id="page-wrap" align ="center">
-		<p><h2 align="center">Data Pemesanan</h2></p>
-		<br><br>
-		<p align="center"><div class="button">
-  <ul><a href="<?php echo base_url()?>tampiladminku/input">Tambah Data</a></ul></div></p>
-		<p align="center">
-		<form method="get" action="datapemesan">
-		<p align="center"><input type="date" name="data">
-		<input type="submit" name="send" value="Cari">
-		</form>
-		<br><br>
-		
-			<table border="1" align="center">
-				<tr>
-				 <th>No</th>
-					<th>Id Pemesanan</th>
-					<th>Tanggal Pemesanan</th>
-					<th>Nama Pemesan</th>
-					<th>Nama Barang</th>
-					<th>Jumlah Barang</th>
-					<th>Harga Satuan</th>
-					<th>Total Bayar</th>
-				</tr>
-				
-				<?php
-				
-                $no = 1;
-                foreach ($data as $row): ?>
-				<tr align="center">
-				    <td><?php echo $no;?></td>
-					<td><?php echo $row->ID_PEMESANAN;?></td>
-					<td><?php echo $row->TGL_PESAN;?></td>
-					<td><?php echo $row->NAMA_PENGGUNA;?></td>
-					<td><?php echo $row->NAMA_BARANG;?></td>
-					<td><?php echo $row->JUMLAH;?></td>
-					<td>Rp <?php echo $row->HARGA_SATUAN;?></td>
-					<td><?php echo $row->HRG_TOTAL;?></td>
-					
-				</tr>
-				<?php $no++;
-                endforeach;?>
-				
-			</table>
-			
-		</p>
-			</div></div>
-	</body>
-	
-	 <footer>
-         <div id="footer_bottom" class="footer-bottom footer" >
+	<center>
+		<h2>Tambah Data Kurir</h2>
+	</center>
+	<form action="<?php echo base_url(). 'kurirku/tambah_aksi'; ?>" method="post">
+		<table style="margin:20px auto;">
+		<tr>
+				<td>Id Kurir</td>
+				<td><input type="varchar" name="ID_KURIR" value="<?=$id;?>" readonly></td>
+			</tr>
+			<tr>
+				<td>Nama Kurir</td>
+				<td><input type="char" name="NAMA_KURIR" required=""></td>
+			</tr>
+			<tr>
+				<td>Alamat Kurir</td>
+				<td><input type="char" name="ALAMAT_KURIR" required=""></td>
+			</tr>
+			<tr>
+				<td>No Hp Kurir</td>
+				<td><input type="varchar" name="NO_HP_KURIR" required=""></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Tambah"></td>
+			</tr>
+		</table>
+	</form>	
+</body>
+  <footer>
+         <div id="footer_bottom" class="footer-bottom footer">
 <div class="container">
 <div class="row">
 <div class="col-md-12">
@@ -219,4 +227,18 @@ padding: 20px;
 </div>
 </div>
       </footer>
+      <script type="text/javascript" src="js/responsee.js"></script> 
+      <script type="text/javascript" src="owl-carousel/owl.carousel.js"></script>   
+      <script type="text/javascript">
+         jQuery(document).ready(function($) {  
+           $("#owl-demo2").owlCarousel({
+           	slideSpeed : 300,
+           	autoPlay : true,
+           	navigation : false,
+           	pagination : true,
+           	singleItem:true
+           });
+         });	
+          
+      </script>  
 </html>

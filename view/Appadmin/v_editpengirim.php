@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Data Supplier </title>
+	<title>Data Pengiriman</title>
 	 <style type="text/css">
   .file {
     visibility: hidden;
@@ -185,34 +185,38 @@ box-shadow: 0 0 20px blue;
 <div class="content"> 
  <div id="page-wrap" align ="center">
 	<center>
-		<h3>Edit Data Supplier</h3>
+		<h3>Edit Data Pengiriman</h3>
 	</center>
-	<?php foreach($data_pemasok as $u){ ?>
-	<form action="<?php echo base_url(). 'supplierku/update'; ?>" method="post">
+	<?php foreach($data as $row){ ?>
+	<form action="<?php echo base_url(). 'pengirimku/update'; ?>" method="post">
 		<table style="margin:20px auto;">
+		<input type="hidden" name="ID_PENGIRIMAN" value="<?php echo $row->ID_PENGIRIMAN ?>"readonly></td>
 		<tr>
-				<td>ID Supplier</td>
-				<td>
-		<input type="varchar" name="ID_PEMASOK" value="<?php echo $u->ID_PEMASOK ?>" readonly>
+			<td>ID Pemesanan</td>
+			<td><input type="char" name="ID_PEMESANAN" value="<?php echo $row->ID_PEMESANAN?>" readonly></td>
 		</tr>
-			<tr>
-				<td>Nama Supplier</td>
-				<td>
-					<input type="char" name="NAMA_PEMASOK" value="<?php echo $u->NAMA_PEMASOK ?>">
-				</td>
-			</tr>
-			<tr>
-				<td>Alamat Supplier</td>
-				<td><input type="char" name="ALAMAT" value="<?php echo $u->ALAMAT ?>"></td>
-			</tr>
-			<tr>
-				<td>No HP Supplier</td>
-				<td><input type="varchar" name="NO_HP_PEMASOK" value="<?php echo $u->NO_HP_PEMASOK ?>"></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><input type="submit" value="Simpan"></td>
-			</tr>
+		<tr>
+			<td>Nama Kurir</td>
+			<td><select name="ID_KURIR">
+				<option value="0">-PILIH-</option>
+				<?php foreach ($data_kurir as $data){ ?>
+				<option value="<?php echo $data->ID_KURIR;?>"> <?php echo $data->NAMA_KURIR;?> </option>
+				<?php }?>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Status</td>
+			<td><select name="STATUS">
+				<option value ="Belum Terkirim">Belum Terkirim</option>
+				<option value ="Proses Pengiriman">Proses Pengiriman</option>
+				<option value ="Telah Terkirim">Telah Terkirim</option>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="submit" value="Simpan"></td>
+		</tr>
 		</table>
 	</form>	
 	<?php } ?>

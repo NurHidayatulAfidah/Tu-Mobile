@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Data Supplier </title>
+	<title>Data Barang</title>
 	 <style type="text/css">
   .file {
     visibility: hidden;
@@ -112,8 +112,8 @@ padding: 20px;
 }
 .footer {
     color: #ffffff;
-    position: relative;
-	top:175px;
+     position: relative;
+	top:163px;
     bottom: 0;
     left: 0;
     right: 0;
@@ -157,9 +157,10 @@ padding: 20px;
   color: white;
 }
 #page-wrap{
-width: 590px;
+width: 500px;
 margin: 50px auto;
-padding: 20px;
+height:250px;
+padding: 0px;
 background: whitesmoke;
 -moz-box-shadow: 0 0 20px blue;
 -webkit-box-shadow: 0 0 20px blue;
@@ -170,62 +171,65 @@ box-shadow: 0 0 20px blue;
 </head>
 <body>
 	<nav class="fixed-top nav navul nav ul:after nav ul li nav ul li:hover nav ul li:hover a nav ul li a nav ul ul nav ul ul li nav ul ul li a nav ul ul li a:hover nav ul ul ul">
-		<ul>
-			<li><a  href = "<?php echo base_url()?>loginku/home"  rel='stylesheet' type='text/css'>HOME</a></li>
-			<li><a  href = "<?php echo base_url()?>inputadmin/index"  rel='stylesheet' type='text/css'>BARANG</a></li>
-			<li><a  href = "<?php echo base_url()?>supplierku/index"  rel='stylesheet' type='text/css'>SUPPLIER</a></li>
-			<li><a  href = "<?php echo base_url()?>kurirku/index"  rel='stylesheet' type='text/css'>KURIR</a></li>	
-			<li> <a  href = "<?php echo base_url()?>tampiladminku/datapemesan"  rel='stylesheet' type='text/css'>PEMESANAN</a></li>	
-			<li> <a  href = "<?php echo base_url()?>pengirimku/index"  rel='stylesheet' type='text/css'>PENGIRIMAN</a></li>	
-			<li><a href="#"><?php echo $this->session->userdata("nama"); ?><a></li>	
-			<li><a href="<?php echo base_url()?>loginku/logout">LOG OUT</a><li>
-		</ul>
+	
+	<ul>
+		<li><a  href = "<?php echo base_url()?>loginku/home"  rel='stylesheet' type='text/css'>HOME</a></li>
+		<li><a  href = "<?php echo base_url()?>inputadmin/index"  rel='stylesheet' type='text/css'>BARANG</a></li>
+		<li><a  href = "<?php echo base_url()?>supplierku/index"  rel='stylesheet' type='text/css'>SUPPLIER</a></li>
+		<li><a  href = "<?php echo base_url()?>kurirku/index"  rel='stylesheet' type='text/css'>KURIR</a></li>
+		<li> <a  href = "<?php echo base_url()?>tampiladminku/datapemesan"  rel='stylesheet' type='text/css'>PEMESANAN</a></li>
+		<li><a  href = "<?php echo base_url()?>pengirimku/index"  rel='stylesheet' type='text/css'>PENGIRIMAN</a></li>
+		<li><a href="#"><?php echo $this->session->userdata("nama"); ?><a></li>	
+		<li><a href="<?php echo base_url()?>loginku/logout">LOG OUT</a><li>
+	</ul>
  </nav>
- <br>
-<div class="content"> 
+ <div class="content"> 
  <div id="page-wrap" align ="center">
 	<center>
-		<h3>Edit Data Supplier</h3>
+	<br><br>
+		<h3>Edit Data Barang </h3>
 	</center>
-	<?php foreach($data_pemasok as $u){ ?>
-	<form action="<?php echo base_url(). 'supplierku/update'; ?>" method="post">
+	<?php foreach($data_barang as $row){ ?>
+	<form action="<?php echo base_url(). 'inputadmin/update1'; ?>" method="post">
 		<table style="margin:20px auto;">
 		<tr>
-				<td>ID Supplier</td>
-				<td>
-		<input type="varchar" name="ID_PEMASOK" value="<?php echo $u->ID_PEMASOK ?>" readonly>
+			<td>ID Barang</td>
+			<td><input type="varchar" name="ID_BARANG" value="<?php echo $row->ID_BARANG ?>" readonly>
 		</tr>
-			<tr>
-				<td>Nama Supplier</td>
-				<td>
-					<input type="char" name="NAMA_PEMASOK" value="<?php echo $u->NAMA_PEMASOK ?>">
-				</td>
-			</tr>
-			<tr>
-				<td>Alamat Supplier</td>
-				<td><input type="char" name="ALAMAT" value="<?php echo $u->ALAMAT ?>"></td>
-			</tr>
-			<tr>
-				<td>No HP Supplier</td>
-				<td><input type="varchar" name="NO_HP_PEMASOK" value="<?php echo $u->NO_HP_PEMASOK ?>"></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><input type="submit" value="Simpan"></td>
-			</tr>
+		<tr>
+			<td>ID Pemasok</td>
+			<td><input type="varchar" name="ID_PEMASOK" value="<?php echo $row->ID_PEMASOK ?>" readonly>
+			</td>
+		</tr>
+		<tr>
+			<td>Nama Barang</td>
+			<td><input type="char" name="NAMA_BARANG" value="<?php echo $row->NAMA_BARANG ?>"></td>
+		</tr>
+		<tr>
+			<td>Harga Satuan</td>
+			<td><input type="char" name="HARGA_SATUAN" value="<?php echo $row->HARGA_SATUAN ?>"></td>
+		</tr>
+		<tr>
+			<td>Stok Barang</td>
+			<td><input type="varchar" name="JUMLAH" value="<?php echo $row->JUMLAH ?>"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="submit" name="submit" value="Simpan"></td>
+		</tr>
 		</table>
 	</form>	
 	<?php } ?>
 	</div></div>
 </body>
 <footer>
-    <div id="footer_bottom" class="footer-bottom footer">
-<div class="container">
-<div class="row">
-<div class="col-md-12">
-<div class="copyright">2014 © <a href="#">FormGet.com</a> All rights reserved.</div>
-</div>
-</div>
-</div>
-      </footer>
+    <div id="footer_bottom" class="footer-bottom footer" >
+	<div class="container">
+	<div class="row">
+	<div class="col-md-12">
+	<div class="copyright">2014 © <a href="#">FormGet.com</a> All rights reserved.</div>
+	</div>
+	</div>
+	</div>
+</footer>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Membuat CRUD dengan CodeIgniter | MalasNgoding.com</title>
+	<title>Data Barang</title>
 <style type="text/css" >
 		*, *:before, *:after {
   box-sizing: border-box;
@@ -22,10 +22,14 @@ nav {
 	text-align: left;
 	
 }
-
+body{
+	background-color:#00FFFF;
+	background: url('galon.jpg');
+	
+}
 nav ul {
 	background: #0099ff; 
-	padding:0px 179px;
+	padding:13px 28.5px;
 	border-radius: 0px;  
 	list-style: none;
 	position: relative;
@@ -46,7 +50,7 @@ nav ul:after {
 			}
 		
 		nav ul li a {
-			display: block; padding: 9px 40px;
+			display: block; padding: 0.7px 45px;
 			color: #fff; text-decoration: none;
 		}
 			
@@ -113,7 +117,8 @@ padding: 20px;
 }
 .footer {
     color: #ffffff;
-    position: absolute;
+     position: relative;
+	top:170px;
     bottom: 0;
     left: 0;
     right: 0;
@@ -139,25 +144,21 @@ padding: 20px;
 <body>
 	<nav class="fixed-top nav navul nav ul:after nav ul li nav ul li:hover nav ul li:hover a nav ul li a nav ul ul nav ul ul li nav ul ul li a nav ul ul li a:hover nav ul ul ul">
 	
-<ul>
-<li><a  href = "<?php echo base_url()?>tampiladminku/home"  rel='stylesheet' type='text/css'>HOME</a></li>
-	
-	<li> <a  href = "<?php echo base_url()?>tampiladminku/datapemesan"  rel='stylesheet' type='text/css'>PEMESANAN</a></li>
-		
-		<li><a  href = "<?php echo base_url()?>inputadmin/index"  rel='stylesheet' type='text/css'>BARANG</a></li>
-		
+	<ul>
+		<li><a  href = "<?php echo base_url()?>loginku/home"  rel='stylesheet' type='text/css'>HOME</a></li>
+		<li><a  href = "<?php echo base_url()?>inputadmin/index" rel='stylesheet' type='text/css'>BARANG</a></li>
 		<li><a  href = "<?php echo base_url()?>supplierku/index"  rel='stylesheet' type='text/css'>SUPPLIER</a></li>
-		
-		
-		<li><a  href = "<?php echo base_url()?>kurirku/index"  rel='stylesheet' type='text/css'>KURIR</a></li>	
-		<li><a href="<?php echo base_url('loginku/logout'); ?>">LOG OUT</a><li>
-		<li><a href="#" onclick='myFunction()'rel='stylesheet' type='text/css'><p> <?php echo $this->session->userdata("nama"); ?> </p><a></li>
-		</ul>
+		<li><a  href = "<?php echo base_url()?>kurirku/index"  rel='stylesheet' type='text/css'>KURIR</a></li>
+		<li> <a  href = "<?php echo base_url()?>tampiladminku/datapemesan"  rel='stylesheet' type='text/css'>PEMESANAN</a></li>
+		<li><a  href = "<?php echo base_url()?>pengirimku/index"  rel='stylesheet' type='text/css'>PENGIRIMAN</a></li>
+		<li><a href="#"><?php echo $this->session->userdata("nama"); ?><a></li>	
+		<li><a href="<?php echo base_url()?>loginku/logout">LOG OUT</a><li>
+	</ul>
  </nav>
- <br><br>
+ <div class="content"> 
+ <div id="page-wrap" align ="center">
 	<center>
-		<h1>Menambahkan Stok Barang </h1>
-		<h3>TAMBAH STOK</h3>
+		<h3>Menambahkan Stok Barang </h3>
 	</center>
 	<?php foreach($data_barang as $u){ ?>
 	<form action="<?php echo base_url(). 'inputadmin/update'; ?>" method="post">
@@ -165,34 +166,35 @@ padding: 20px;
 		<tr>
 				<td>Id Barang</td>
 				<td>
-					<input type="varchar" name="ID_BARANG" value="<?php echo $u->ID_BARANG ?>">
+					<input type="varchar" name="ID_BARANG" value="<?php echo $u->ID_BARANG ?>"readonly>
 				</td>
 			</tr>
 			<tr>
 				<td>Nama Barang</td>
 				<td>
-					<input type="varchar" name="NAMA_BARANG" value="<?php echo $u->NAMA_BARANG ?>">
+					<input type="varchar" name="NAMA_BARANG" value="<?php echo $u->NAMA_BARANG ?>"readonly>
 				</td>
 			</tr>
 			<tr>
-				<td>Jenis Barang</td>
-				<td><input type="varchar" name="JENIS_BARANG" value="<?php echo $u->JENIS_BARANG ?>"></td>
-			</tr>
-			<tr>
 				<td>Harga Satuan</td>
-				<td><input type="varchar" name="HARGA_SATUAN" value="<?php echo $u->HARGA_SATUAN ?>"></td>
+				<td><input type="varchar" name="HARGA_SATUAN" value="<?php echo $u->HARGA_SATUAN ?>"readonly></td>
 			</tr>
 			<tr>
-				<td>Stok Barang</td>
-				<td><input type="varchar" name="STOCK_BARANG" value="<?php echo $u->STOCK_BARANG ?>"></td>
+				<td>Stock Barang yang Ada</td>
+				<td><input type="varchar" name="JUMLAH" value="<?php echo $u->JUMLAH ?>"readonly></td>
+			</tr>
+			<tr>
+				<td>Stock Tambahan</td>
+				<td><input type="varchar" name="stok_tambah" style="background:#ffffff; color:#000000" required=""></td>
 			</tr>
 			<tr>
 				<td></td>
-				<td><input type="submit" value="Tambah_Stok"></td>
+				<td><input type="submit" value="Tambah Stok"></td>
 			</tr>
 		</table>
 	</form>	
 	<?php } ?>
+	</div></div>
 </body>
  <footer>
          <div id="footer_bottom" class="footer-bottom footer" >
@@ -205,5 +207,3 @@ padding: 20px;
 </div>
       </footer>
 </html>
-
-
