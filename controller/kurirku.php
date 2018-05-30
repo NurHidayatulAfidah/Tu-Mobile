@@ -1,41 +1,82 @@
 <?php
 class kurirku extends CI_Controller{
-	 public function __construct(){
+		public function __construct(){
 		parent::__construct();
 		
+		if($this->session->userdata('status') != "login"){
+			redirect(base_url("loginku/index"));
+		}
+		
 		 $this->load->model('M_kurir');
-        //$this->model = $this->Model_Mahasiswa;
 	}
 	
-public	function index(){
-		$data['gambar'] = $this->M_kurir->view();
-		$this->load->view('Appkurir/kurir',$data);
+	public	function index(){
+		$data['data_kurir'] = $this->M_kurir->tampil_data()->result();
+		$this->load->view('AppAdmin/v_kurir',$data);
 	}
 
-public function tambah(){
-    $data = array();
-    
-    if($this->input->post('submit')){ // Jika user menekan tombol Submit (Simpan) pada form
-      // lakukan upload file dengan memanggil function upload yang ada di GambarModel.php
-      $upload = $this->M_kurir->upload();
-      
-      if($upload['result'] == "success"){ // Jika proses upload sukses
-         // Panggil function save yang ada di GambarModel.php untuk menyimpan data ke database
-        $this->M_kurir->save($upload);
-        
-        redirect('kurirku'); // Redirect kembali ke halaman awal / halaman view data
-      }else{ // Jika proses upload gagal
-        $data['message'] = $upload['error']; // Ambil pesan error uploadnya untuk dikirim ke file form dan ditampilkan
-      }
-    }
-    
-    $this->load->view('Appkurir/formKurir', $data);
-  }
-public function delete($ID_KURIR){
-		$where = array('ID_KURIR' => $ID_KURIR);
-		$this->M_kurir->delete ($where,'data_kurir');
+	public function tambah(){
+		$data['id'] = $this->M_kurir->id_otomatis();
+		$this->load->view('AppAdmin/v_tambahkurir',$data);
+	}
+
+	function tambah_aksi(){
+		$ID_KURIR = $this->input->post('ID_KURIR');
+		$NAMA_KURIR		= $this->input->post('NAMA_KURIR');
+		$ALAMAT_KURIR = $this->input->post('ALAMAT_KURIR');
+		$NO_HP_KURIR = $this->input->post('NO_HP_KURIR');
+ 
+		$data = array(
+		    'ID_KURIR' =>$ID_KURIR,
+			'NAMA_KURIR' => $NAMA_KURIR,
+			'ALAMAT_KURIR' => $ALAMAT_KURIR,
+			'NO_HP_KURIR' => $NO_HP_KURIR
+			);
+		$this->M_kurir->input_data($data,'data_kurir');
 		redirect('kurirku/index');
 	}
-
+	
+	function cari(){
+		if(isset ($_GET['data'])){
+			$data=array(
+				'data_kurir'=>$this->M_kurir->get_data_cari($_GET['data']));
+				$this->load->view('Appadmin/v_kurir',$data);
+		}else{
+			$data = array(
+				'data_kurir'=>$this->M_kurir->get_data());
+			$this->load->view('Appadmin/v_kurir',$data);
+		}
+   }
+	
+	function delete($ID_KURIR){
+		$where = array('ID_KURIR' => $ID_KURIR);
+		$this->M_kurir->hapus_data($where,'data_kurir');
+		redirect('kurirku/index');
+	}
+	
+	function edit($ID_KURIR){
+		$where = array('ID_KURIR' => $ID_KURIR);
+		$data['data_kurir'] = $this->M_kurir->edit_data($where,'data_kurir')->result();
+		$this->load->view('Appadmin/v_editkurir',$data);
+	}
+	function update(){
+		$ID_KURIR = $this->input->post('ID_KURIR');
+		$NAMA_KURIR = $this->input->post('NAMA_KURIR');
+		$ALAMAT_KURIR = $this->input->post('ALAMAT_KURIR');
+		$NO_HP_KURIR = $this->input->post('NO_HP_KURIR');
+ 
+		$data = array(
+			'NAMA_KURIR' => $NAMA_KURIR,
+			'ALAMAT_KURIR' => $ALAMAT_KURIR,
+			'NO_HP_KURIR' => $NO_HP_KURIR
+		);
+ 
+		$where = array(
+			'ID_KURIR' => $ID_KURIR
+		);
+ 
+		$this->M_kurir->update_data($where,$data,'data_kurir');
+		redirect('kurirku/index');
+	}
 }
 ?>

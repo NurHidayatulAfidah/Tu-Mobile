@@ -1,21 +1,24 @@
 <?php 
 class supplierku extends CI_Controller{
-	function __construct(){
+	public function __construct(){
 		parent::__construct();
 		$this->load->helper(array('url'));
 		$this->load->model('Model_supplier');
-        //$this->model = $this->Model_Mahasiswa;
 		
+		if($this->session->userdata('status') != "login"){
+			redirect(base_url("loginku/index"));
+		}
 	}
-	function index(){
+	public function index(){
 		$data['data_pemasok'] = $this->Model_supplier->tampil_data()->result();
 		$this->load->view('Appadmin/supplier',$data);
 	}
-		function tambah(){
-		$this->load->view('Appadmin/v_supplier');
+	public function tambah(){
+		$data['id'] = $this->Model_supplier->id_otomatis();	
+		$this->load->view('Appadmin/v_supplier',$data);
 	}
  
-	function tambah_aksi(){
+	 function tambah_aksi(){
 		$ID_PEMASOK = $this->input->post('ID_PEMASOK');
 		$NAMA_PEMASOK = $this->input->post('NAMA_PEMASOK');
 		$ALAMAT = $this->input->post('ALAMAT');
@@ -30,19 +33,28 @@ class supplierku extends CI_Controller{
 		$this->Model_supplier->input_data($data,'data_pemasok');
 		redirect('supplierku/index');
 	}
- 
-	function hapus($ID_PEMASOK){
+   function cari(){
+		if(isset ($_GET['data'])){
+			$data=array(
+				'data_pemasok'=>$this->Model_supplier->get_data_cari($_GET['data']));
+				$this->load->view('Appadmin/supplier',$data);
+		}else{
+		$data = array(
+				'data_pemasok'=>$this->Model_supplier->get_data());
+		$this->load->view('Appadmin/supplier',$data);
+   }}
+	 function hapus($ID_PEMASOK){
 		$where = array('ID_PEMASOK' => $ID_PEMASOK);
 		$this->Model_supplier->hapus_data($where,'data_pemasok');
 		redirect('supplierku/index');
 	}
  
-	function edit($ID_PEMASOK){
+	 function edit($ID_PEMASOK){
 		$where = array('ID_PEMASOK' => $ID_PEMASOK);
 		$data['data_pemasok'] = $this->Model_supplier->edit_data($where,'data_pemasok')->result();
 		$this->load->view('Appadmin/v_editsupplier',$data);
 	}
- function update(){
+  function update(){
 	$ID_PEMASOK = $this->input->post('ID_PEMASOK');
 	$NAMA_PEMASOK = $this->input->post('NAMA_PEMASOK');
 	$ALAMAT = $this->input->post('ALAMAT');
@@ -62,7 +74,4 @@ class supplierku extends CI_Controller{
 	redirect('supplierku/index');
 }
 	}
-	
-
-
 ?>
