@@ -1,50 +1,45 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 class M_kurir extends CI_Model {
-  // Fungsi untuk menampilkan semua data gambar
-  public function view(){
-    return $this->db->get('data_kurir')->result();
-  }
-  
-  // Fungsi untuk melakukan proses upload file
-  public function upload(){
-    $config['upload_path'] = './images/';
-    $config['allowed_types'] = 'jpg|png|jpeg';
-    $config['max_size']  = '2048';
-    $config['remove_space'] = TRUE;
-  
-    $this->load->library('upload', $config); // Load konfigurasi uploadnya
-    if($this->upload->do_upload('input_gambar')){ // Lakukan upload dan Cek jika proses upload berhasil
-      // Jika berhasil :
-      $return = array('result' => 'success', 'file' => $this->upload->data(), 'error' => '');
-      return $return;
-    }else{
-      // Jika gagal :
-      $return = array('result' => 'failed', 'file' => '', 'error' => $this->upload->display_errors());
-      return $return;
+	function tampil_data(){
+		return $this->db->get('data_kurir');
+	}
+	function input_data($data,$table){
+		$this->db->insert($table,$data);
+	}
+	function id_otomatis(){
+		$this->db->select('Right(data_kurir.ID_KURIR,3) as kode ',false);
+		$this->db->order_by('ID_KURIR', 'desc');
+		$this->db->limit(1);
+		$query = $this->db->get('data_kurir');
+		if($query->num_rows()<>0){
+			$data = $query->row();
+			$kode = intval($data->kode)+1;
+		}else{
+			$kode = 1;
+		}
+		$kodemax = str_pad($kode,3,"0",STR_PAD_LEFT);
+		$kodejadi  = "KR".$kodemax;
+		return $kodejadi;
     }
-  }
-  
-  // Fungsi untuk menyimpan data ke database
-  public function save($upload){
-    $data = array(
-	   'ID_KURIR'=>$this->input->post('ID_KURIR'),
-      'NAMA_KURIR'=>$this->input->post('NAMA_KURIR'),
-      'ALAMAT_KURIR' => $this->input->post('ALAMAT_KURIR'),
-	  'NO_HP_KURIR' => $this->input->post('NO_HP_KURIR'),
-	  'nama_file' => $upload['file']['file_name']
-    );
-    
-    $this->db->insert('data_kurir', $data);
-}
-function edit_data($where,$table){
-	return $this->db->get_where($table,$where);
-}
-function update_data($where,$data,$table){
+	function hapus_data($where,$table){
+		$this->db->where($where);
+		$this->db->delete($table);
+	}
+ 
+	function edit_data($where,$table){		
+		return $this->db->get_where($table,$where);
+	}
+ 
+	function update_data($where,$data,$table){
 		$this->db->where($where);
 		$this->db->update($table,$data);
 	}	
-	function delete($id){
-		$this->db->where($id);
-        return $this->db->delete('data_kurir');
+	function get_data_cari($data){
+		$data = $this->db->query("SELECT * FROM data_kurir WHERE  NAMA_KURIR LIKE '%$data%'");
+		return $data->result();
 	}
-}
+	function get_data(){
+		$query = $this->db->query("SELECT *FROM  data_kurir ");
+		return $query->result();
+	}
+}?>
