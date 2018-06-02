@@ -44,5 +44,8 @@ class loginku extends CI_Controller{
 			</script>";
 			$this->load->view('Appadmin/v_login');
 	}
+	function mhome(){
+	    $this->load->view('Appadmin/v_home');
+	}
 }
 ?>
